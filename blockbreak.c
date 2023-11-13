@@ -16,6 +16,8 @@ int main(){
     int bar2_x = 40; //오른쪽 막대 초기 x 좌표
     int bar2_y = 20; //오른쪽 막대 초기 y 좌표
 
+    system("mode con cols=80 lines=25"); // 콘솔 창 크기 설정
+
     while(1){
         system("cls"); //공과 막대의 이전위치 지우기
 
