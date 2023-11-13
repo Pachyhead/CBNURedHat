@@ -15,7 +15,7 @@ int main(){
     int bar1_y = 20; //왼쪽 막대 초기 y 좌표
     int bar2_x = 40; //오른쪽 막대 초기 x 좌표
     int bar2_y = 20; //오른쪽 막대 초기 y 좌표
-    
+
     while(1){
         system("cls"); //공과 막대의 이전위치 지우기
 
@@ -24,6 +24,10 @@ int main(){
 
         gotoxy(x, y);
         printf("■");//위치에 따라 공 출력
+        gotoxy(bar1_x, bar1_y);
+        printf("■");//위치에 따라 왼쪽 막대 출력
+        gotoxy(bar2_x, bar2_y);
+        printf("■");//위치에 따라 오른쪽 막대 출력
 
         Sleep(100);//공이 이동하는 속도 조절
 
