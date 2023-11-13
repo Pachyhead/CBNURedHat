@@ -13,7 +13,7 @@ int main(){
     int dy = 1; // 공을 아래쪽으로 이동시킴
 
     while(1){
-        
+        system("cls"); //공과 막대의 이전위치 지우기
 
         x += dx;//공의 좌표 바꾸기
         y += dy;
