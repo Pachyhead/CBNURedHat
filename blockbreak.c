@@ -13,6 +13,9 @@ int main(){
     int dy = 1; // 공을 아래쪽으로 이동시킴
 
     while(1){
+        gotoxy(x, y);//공의 이전위치 지우기
+        printf(" ");
+
         x += dx;//공의 좌표 바꾸기
         y += dy;
 
