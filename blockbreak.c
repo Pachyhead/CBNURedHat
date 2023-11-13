@@ -45,5 +45,13 @@ int main(){
             dx = 1;
             dy = -1;
         }
+        if (GetAsyncKeyState(VK_LEFT) & 0x8000) { // 막대 왼쪽으로 이동
+            bar1_x--;
+            bar2_x--;
+        }
+        if (GetAsyncKeyState(VK_RIGHT) & 0x8000) { // 막대 오른쪽으로 이동
+            bar1_x++;
+            bar2_x++;
+        }
     }
 }
