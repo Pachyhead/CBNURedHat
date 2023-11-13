@@ -15,5 +15,8 @@ int main(){
     while(1){
         x += dx;//공의 좌표 바꾸기
         y += dy;
+
+        gotoxy(x, y);
+        printf("■");//위치에 따라 공 출력
     }
 }
