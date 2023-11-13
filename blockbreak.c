@@ -18,5 +18,7 @@ int main(){
 
         gotoxy(x, y);
         printf("■");//위치에 따라 공 출력
+
+        Sleep(100);//공이 이동하는 속도 조절
     }
 }
