@@ -11,7 +11,9 @@ int main(){
     int y = 1;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
     int dy = 1; // 공을 아래쪽으로 이동시킴
-
+    int bar1_x = 39; //왼쪽 막대 초기 x 좌표
+    int bar1_y = 20; //왼쪽 막대 초기 y 좌표
+    
     while(1){
         system("cls"); //공과 막대의 이전위치 지우기
 
