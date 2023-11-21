@@ -47,6 +47,7 @@ int main(){
     int bar3_y = 23; //오른쪽 막대 초기 y 좌표
     int bar4_x = 21;
     int bar4_y = 23;
+    int counttime;
 
     while(1){
         gotoxy(bar1_x, bar1_y);
