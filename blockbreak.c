@@ -7,6 +7,15 @@ void gotoxy(int x, int y) {//원하는 x,y좌표로 이동시키는 함수
 }
  
 int main(){
+    int st_intro_x=45;
+    int st_intro_y=10;
+    int st_choose_x=49;
+    int st_choose_y=20;
+    int stage;
+    gotoxy(st_intro_x, st_intro_y);
+    printf("1:쉬움   2:보통   3:어려움");
+    gotoxy(st_choose_x, st_choose_y);
+    printf("난이도를 선택하세요:");
     int x = 2;  // 공의 초기 x 좌표
     int y = 2;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
