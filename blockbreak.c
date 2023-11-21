@@ -93,6 +93,9 @@ int main(){
             break;
         }
 
+        gotoxy(50, 1);
+        printf("%d초", counttime);
+
 
         
 
