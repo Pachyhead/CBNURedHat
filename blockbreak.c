@@ -139,6 +139,7 @@ int main(){
             dx = 1;
             dy = -1;
         }
+        count++;
     }
     system("cls");
     printf("게임종료");
