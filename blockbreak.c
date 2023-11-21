@@ -12,13 +12,13 @@ int main(){
     int dx = 1; // 공을 오른쪽으로 이동시킴
     int dy = 1; // 공을 아래쪽으로 이동시킴
     int bar1_x = 18; //왼쪽 막대 초기 x 좌표
-    int bar1_y = 45; //왼쪽 막대 초기 y 좌표
+    int bar1_y = 23; //왼쪽 막대 초기 y 좌표
     int bar2_x = 19;
-    int bar2_y = 45;
+    int bar2_y = 23;
     int bar3_x = 20; //오른쪽 막대 초기 x 좌표
-    int bar3_y = 45; //오른쪽 막대 초기 y 좌표
+    int bar3_y = 23; //오른쪽 막대 초기 y 좌표
     int bar4_x = 21;
-    int bar4_y = 45;
+    int bar4_y = 23;
 
     while(1){
         gotoxy(bar1_x, bar1_y);
