@@ -85,6 +85,15 @@ int main(){
         gotoxy(x,y);
         printf("  ");//이전 공의 위치 지우기
 
+        if (count % 20 == 0) {
+            counttime -= 1;
+        }
+
+        if (counttime == 0) {
+            break;
+        }
+
+
         
 
         x += dx;//공의 좌표 바꾸기
