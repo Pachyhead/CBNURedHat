@@ -23,8 +23,6 @@ int main(){
     system("mode con cols=40 lines=50"); // 콘솔 창 크기 설정
 
     while(1){
-        system("cls"); //공과 막대의 이전위치 지우기
-
         x += dx;//공의 좌표 바꾸기
         y += dy;
 
