@@ -48,7 +48,16 @@ int main(){
     int bar4_x = 21;
     int bar4_y = 23;
     int counttime;
+    if (stage == 1) {
+        counttime = 300;
+    }
+    else if (stage == 2) {
+        counttime = 180;
+    }
 
+    else if (stage == 3) {
+        counttime = 60;
+    }
     while(1){
         gotoxy(bar1_x, bar1_y);
         printf(" ");
