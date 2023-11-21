@@ -97,7 +97,7 @@ int main(){
         printf("O");//위치에 따라 오른쪽 막대 출력
         gotoxy(bar4_x, bar4_y);
         printf("O");
-        Sleep(100);//공이 이동하는 속도 조절
+        Sleep(50);//공이 이동하는 속도 조절
 
         if(x==1||x==38){//특정 x좌표에서 이동방향 반대로 바꾸기
             dx=-dx;
