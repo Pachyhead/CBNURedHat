@@ -23,8 +23,31 @@ int main(){
     system("mode con cols=40 lines=50"); // 콘솔 창 크기 설정
 
     while(1){
+        gotoxy(bar1_x, bar1_y);
+        printf(" ");
+        gotoxy(bar2_x, bar2_y);
+        printf(" ");
+        gotoxy(bar3_x, bar3_y);
+        printf(" ");
+        gotoxy(bar4_x, bar4_y);
+        printf(" ");
+        
+        if (GetAsyncKeyState(VK_LEFT) & 0x8000) { // 막대 왼쪽으로 이동
+            bar1_x--;
+            bar2_x--;
+            bar3_x--;
+            bar4_x--;
+        }
+        if (GetAsyncKeyState(VK_RIGHT) & 0x8000) { // 막대 오른쪽으로 이동
+            bar1_x++;
+            bar2_x++;
+            bar3_x++;
+            bar4_x++;
+        }
+
         gotoxy(x,y);
         printf("  ");//이전 공의 위치 지우기
+        
         x += dx;//공의 좌표 바꾸기
         y += dy;
 
@@ -64,18 +87,6 @@ int main(){
         if (x == bar4_x && y == bar4_y - 1) {
             dx = 1;
             dy = -1;
-        }
-        if (GetAsyncKeyState(VK_LEFT) & 0x8000) { // 막대 왼쪽으로 이동
-            bar1_x--;
-            bar2_x--;
-            bar3_x--;
-            bar4_x--;
-        }
-        if (GetAsyncKeyState(VK_RIGHT) & 0x8000) { // 막대 오른쪽으로 이동
-            bar1_x++;
-            bar2_x++;
-            bar3_x++;
-            bar4_x++;
         }
     }
     system("cls");
