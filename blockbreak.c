@@ -18,6 +18,23 @@ int main(){
     printf("난이도를 선택하세요:");
     scanf("%d", &stage);
     system("cls");
+
+    for (int i = 0; i < 41; i++) {
+        printf("■");
+    }
+    printf("\n");
+    for (int i = 0; i < 25; i++) {
+        printf("|");
+        for (int i = 0; i < 39; i++) {
+            printf(" ");
+        }
+        printf("|\n");
+
+
+    }
+    for (int i = 0; i < 41; i++) {
+        printf("■");
+    }
     int x = 2;  // 공의 초기 x 좌표
     int y = 2;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
