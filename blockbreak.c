@@ -16,6 +16,7 @@ int main(){
     printf("1:쉬움   2:보통   3:어려움");
     gotoxy(st_choose_x, st_choose_y);
     printf("난이도를 선택하세요:");
+    scanf("%d", &stage);
     int x = 2;  // 공의 초기 x 좌표
     int y = 2;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
