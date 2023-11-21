@@ -48,6 +48,7 @@ int main(){
     int bar4_x = 21;
     int bar4_y = 23;
     int counttime;
+    int count=1;
     if (stage == 1) {
         counttime = 300;
     }
@@ -83,6 +84,8 @@ int main(){
 
         gotoxy(x,y);
         printf("  ");//이전 공의 위치 지우기
+
+        
 
         x += dx;//공의 좌표 바꾸기
         y += dy;
