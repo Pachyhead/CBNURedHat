@@ -26,7 +26,7 @@ int choose(){
 }
 
 void wall(){
-    textcolor(9);
+    textcolor(9);//파란색
     for (int i = 0; i < 41; i++) {
         printf("■");
     }
@@ -41,9 +41,11 @@ void wall(){
 
 
     }
+    textcolor(10);//초록색
     for (int i = 0; i < 41; i++) {
         printf("■");
     }
+    textcolor(15);
 }
 int main(){
     int stage=choose();
