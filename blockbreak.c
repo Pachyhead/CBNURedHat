@@ -102,7 +102,20 @@ int main(){
         if (counttime == 0) {
             break;
         }
-
+        for (by = 0;by < 7;by++) { //블록과 공이 충돌 시 블록 삭제
+            for (bx = 1; bx < 39; bx++) {
+                if (block[by][bx] != 0) {
+                    if (x == bx + 1 && y == by + 1) {
+                        dy = 1;
+                        block[by][bx] = 0;
+                        gotoxy(bx + 1, by + 1);
+                        printf(" ");
+                        score++;
+                        break;
+                    }
+                }
+            }
+        }
         gotoxy(50, 1);
         printf("%d초", counttime);
 
