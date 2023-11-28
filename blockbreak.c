@@ -106,6 +106,7 @@ int main(){
             for (bx = 1; bx < 39; bx++) {
                 if (block[by][bx] != 0) {
                     if (x == bx + 1 && y == by + 1) {
+                        if (x < 37) x++;//반복되지 않게 수정
                         dy = 1;
                         block[by][bx] = 0;
                         gotoxy(bx + 1, by + 1);
