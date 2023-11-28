@@ -142,7 +142,7 @@ int main(){
         for (by = 0;by < 7;by++) { //블록과 공이 충돌 시 블록 삭제
             for (bx = 1; bx < 39; bx++) {
                 if (block[by][bx] != 0) {
-                    if (x == bx + 1 && y == by + 1) {
+                    if (x == bx + 1 && y == by + 2) {
                         if (x < 37) x++;//반복되지 않게 수정
                         dy = 1;
                         block[by][bx] = 0;
