@@ -119,7 +119,8 @@ int main(){
         }
         gotoxy(50, 1);
         printf("%d초", counttime);
-
+        gotoxy(50, 2);
+        printf("score:%d", score);
 
         
 
