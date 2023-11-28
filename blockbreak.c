@@ -51,6 +51,7 @@ int main(){
     int count=1;
     int block[7][40]; //블록 존재 여부 확인
     int bx = 0, by = 0; //블록 좌표 변수 선언
+    int score = 0; //점수 변수 선언
     if (stage == 1) {
         counttime = 300;
     }
