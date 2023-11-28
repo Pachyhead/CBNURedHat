@@ -63,7 +63,7 @@ int main(){
         for (int bx = 1; bx < 39; bx++) {
             block[by][bx] = 1;
             gotoxy(bx + 1, by + 1);
-            printf("B");
+            printf("▣");
         }
     }
     if (stage == 1) {
