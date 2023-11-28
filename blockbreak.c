@@ -6,7 +6,7 @@ void gotoxy(int x, int y) {//원하는 x,y좌표로 이동시키는 함수
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
  
-int main(){
+int choose(){
     int st_intro_x=45;
     int st_intro_y=10;
     int st_choose_x=49;
@@ -18,6 +18,9 @@ int main(){
     printf("난이도를 선택하세요:");
     scanf("%d", &stage);
     system("cls");
+}
+int main(){
+    
 
     for (int i = 0; i < 41; i++) {
         printf("■");
