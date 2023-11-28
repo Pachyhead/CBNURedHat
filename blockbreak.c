@@ -20,10 +20,8 @@ int choose(){
     system("cls");
     return stage;
 }
-int main(){
-    int stage=choose();
-    
 
+void wall(){
     for (int i = 0; i < 41; i++) {
         printf("■");
     }
@@ -40,6 +38,10 @@ int main(){
     for (int i = 0; i < 41; i++) {
         printf("■");
     }
+}
+int main(){
+    int stage=choose();
+    wall();
     int x = 18;  // 공의 초기 x 좌표
     int y = 20;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
