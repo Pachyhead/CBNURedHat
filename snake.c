@@ -110,6 +110,7 @@ void Eat();
 void BodyPlus();
 void Score();
 void Clear();
+void textColor(int colorNum);
 
 void GameOver();
 void GameExplain();
@@ -419,7 +420,7 @@ void FoodOutput() {
     }
 
     gotoxy(food.x, food.y);
-    textColor(9);
+    textColor(14);
     printf("★");
     textColor(15);
 }
@@ -534,7 +535,7 @@ void GameExplain()
     puts("▶ 머리가 몸이나 벽에 닿을시 게임오버입니다");
 
     gotoxy(50, 14);
-    puts("▶ ♥를 먹으면 뱀의 길이가 늘어나고 점수가 1점 추가됩니다");
+    puts("▶ ★를 먹으면 뱀의 길이가 늘어나고 점수가 1점 추가됩니다");
 
     gotoxy(50, 16);
     puts("▶ 종료하려면 q를 누르세요");
