@@ -419,7 +419,9 @@ void FoodOutput() {
     }
 
     gotoxy(food.x, food.y);
-    printf("♥");
+    textColor(9);
+    printf("★");
+    textColor(15);
 }
 
 void Eat()
@@ -461,7 +463,9 @@ void BlockOutput(int diff)
         }
 
         gotoxy(block.x, block.y);
+        textColor(12);
         printf("▣");
+        textColor(15);
         blockArray[blockCount].x = block.x;
         blockArray[blockCount].y = block.y;
         blockCount += 1;
@@ -703,4 +707,7 @@ void CursorView(char show)//커서숨기기
     ConsoleCursor.dwSize = 1;
 
     SetConsoleCursorInfo(hConsole, &ConsoleCursor);
+}
+void textColor(int colorNum) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorNum);
 }
