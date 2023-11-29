@@ -46,7 +46,7 @@ Component food;
 
 Component block;
 
-int i, j;
+int i, j, mode = 0;
 
 typedef struct _logic
 {
@@ -61,7 +61,7 @@ linkedList* snakeList;
 
 bool plusChecker;
 
-int map[20][20] = 
+int map[20][20] =
 {
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
     {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -96,10 +96,10 @@ void insertLast(linkedList* list, coord value); // 맨 뒤에 노드를 추가�
 
 void Map();
 void Init();
-void TempToBody();
 void MoveCoor();
+int choiceGame();
+void consorClear();
 
-void BodyToTemp();
 void Delete();
 void Output();
 void Move();
@@ -273,7 +273,7 @@ void Map()
         for (j = 0; j < MAPWIDTH; j++)
         {
             if (map[i][j] == 1)
-                printf("▣ ");
+                printf("▣");
             else
                 printf("  ");
         }
@@ -374,6 +374,7 @@ void Move(int diff)
         MoveCoor();
         Output();
         Eat();
+        
         BlockOutput(diff);
         GameOver();
         if (_kbhit())
@@ -457,7 +458,7 @@ void BlockOutput(int diff)
                 block.x = (rand() % 18 + 1) * 2;
                 block.y = rand() % 18 + 1;
             }
-     }
+        }
 
         gotoxy(block.x, block.y);
         printf("▣");
@@ -545,11 +546,63 @@ void Clear()
     exit(0);
 }
 
+int choiceGame() {
+    int playing = 1;
+    while (playing) {
+        gotoxy(25, 10);
+        printf("■■■■■   ■      ■       ■       ■    ■  ■■■■■");
+        gotoxy(25, 11);
+        printf("■           ■■    ■     ■  ■     ■  ■    ■");
+        gotoxy(25, 12);
+        printf("■■■■■   ■  ■  ■   ■■■■■   ■■      ■■■■■");
+        gotoxy(25, 13);
+        printf("        ■   ■    ■■   ■      ■   ■  ■    ■");
+        gotoxy(25, 14);
+        printf("■■■■■   ■      ■   ■      ■   ■    ■  ■■■■■   Game");
+        gotoxy(90, 17);
+        printf("1. easy mode");
+        gotoxy(90, 18);
+        printf("2. nomal mode");
+        gotoxy(90, 19);
+        printf("3. hard mode");
+        gotoxy(50, 25);
+        printf("choice mode num: ");
+        gotoxy(67, 25);
+        scanf_s("%d", &mode);
+        if (mode < 0 || mode  > 3) {
+            gotoxy(67, 25);
+            printf("       ");
+            gotoxy(44, 26);
+            printf("1~3 사이에 숫자를 입력해주세요.");
+            continue;
+        }
+        if (mode != 0) playing = 0;
+    }
+    return mode;
+}
+
+void consorClear() {
+    for (int i = 10; i < 15; i++) {
+        gotoxy(25, i);
+        printf("                                                                    ");
+    }
+    for (int i = 17; i < 20; i++) {
+        gotoxy(90, i);
+        printf("             ");
+    }
+    gotoxy(50, 25);
+    printf("                  ");
+    gotoxy(44, 26);
+    printf("                               ");
+    gotoxy(0, 0);
+}
+
 int main()
 {
     int key;
     int select;
-
+    choiceGame();
+    consorClear();
     printf("select: ");
     scanf_s("%d", &select);
     system("cls");
