@@ -52,6 +52,11 @@ int main(){
     int block[7][40]; //블록 존재 여부 확인
     int bx = 0, by = 0; //블록 좌표 변수 선언
     int score = 0; //점수 변수 선언
+    for (int bx = 1; bx < 39; bx++) {
+        block[by][bx] = 1;
+        gotoxy(bx + 1, by + 1);
+        printf("B");
+    }
     if (stage == 1) {
         counttime = 300;
     }
