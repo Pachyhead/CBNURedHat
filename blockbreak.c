@@ -18,6 +18,7 @@ int choose(){
     printf("난이도를 선택하세요:");
     scanf("%d", &stage);
     system("cls");
+    return stage;
 }
 int main(){
 
