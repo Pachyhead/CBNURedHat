@@ -152,6 +152,16 @@ int main(){
                         block[by][bx] = 0;
                         gotoxy(bx + 1, by + 1);
                         printf(" ");
+                        if (bx > 1) {
+                            block[by][bx - 1] = 0;
+                            gotoxy(bx, by + 1);
+                            printf(" ");
+                        }
+                        if (bx < 38) {
+                            block[by][bx + 1] = 0;
+                            gotoxy(bx + 2, by + 1);
+                            printf(" ");
+                        }
                         score++;
                         break;
                     }
