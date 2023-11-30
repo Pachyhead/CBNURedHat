@@ -26,9 +26,11 @@ int choose(){
 }
 
 void wall(){
+    textcolor(9);
     for (int i = 0; i < 41; i++) {
         printf("■");
     }
+    textcolor(15);
     printf("\n");
     for (int i = 0; i < 25; i++) {
         printf("|");
