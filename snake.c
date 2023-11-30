@@ -404,24 +404,11 @@ void FoodOutput() {
     food.x = (rand() % 18 + 1) * 2;
     food.y = rand() % 18 + 1;
 
-    for (int i = 1; i <= 3; i++) { // food 주변 좌표 123/456/789 순이다.
-        for (int j = 1; j <= 3; j++) {
-            sanctuary[i * j - 1].x = food.x + (i - 2);
-            sanctuary[i * j - 1].y = food.y + (j - 2);
-        }
-    }
-
     for (int i = 0; i < length; i++) {
         coord forTemp = getCoord(snakeList, i);
         if (forTemp.x == food.x && forTemp.y == food.y) {
             food.x = (rand() % 18 + 1) * 2;
             food.y = rand() % 18 + 1;
-            for (i = 1; i <= 3; i++) { // food 주변 좌표 123/456/789 순이다.
-                for (int j = 1; j <= 3; j++) {
-                    sanctuary[i * j - 1].x = food.x + (i - 2);
-                    sanctuary[i * j - 1].y = food.y + (j - 2);
-                }
-            }
         }
     }
 
