@@ -49,6 +49,7 @@ int main(){
     int bar4_y = 23;
     int counttime;
     int count=1;
+    int block[7][40]; //블록 존재 여부 확인
     if (stage == 1) {
         counttime = 300;
     }
