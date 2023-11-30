@@ -44,7 +44,7 @@ void wall(){
 int main(){
     int stage=choose();
     wall();
-    
+
     int x = 18;  // 공의 초기 x 좌표
     int y = 20;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
@@ -66,7 +66,7 @@ int main(){
         for (int bx = 1; bx < 39; bx++) {
             block[by][bx] = 1;
             gotoxy(bx + 1, by + 1);
-            printf("B");
+            printf("▣");
         }
     }
     if (stage == 1) {
