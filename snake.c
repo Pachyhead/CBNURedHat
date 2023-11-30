@@ -46,7 +46,7 @@ Component food;
 
 Component block;
 
-int i, j, mode = 0;
+int mode = 0;
 
 typedef struct _logic
 {
@@ -269,9 +269,9 @@ void insertLast(linkedList* list, coord value) {
 
 void Map()
 {
-    for (i = 0; i < MAPHEIGHT; i++)
+    for (int i = 0; i < MAPHEIGHT; i++)
     {
-        for (j = 0; j < MAPWIDTH; j++)
+        for (int j = 0; j < MAPWIDTH; j++)
         {
             if (map[i][j] == 1)
                 printf("▣");
@@ -381,7 +381,7 @@ void Move(int diff)
         MoveCoor();
         Output();
         Eat();
-        
+
         BlockOutput(diff);
         GameOver();
         if (_kbhit())
@@ -404,8 +404,8 @@ void FoodOutput() {
     food.x = (rand() % 18 + 1) * 2;
     food.y = rand() % 18 + 1;
 
-    for (i = 1; i <= 3; i++) { // food 주변 좌표 123/456/789 순이다.
-        for (j = 1; j <= 3; j++) {
+    for (int i = 1; i <= 3; i++) { // food 주변 좌표 123/456/789 순이다.
+        for (int j = 1; j <= 3; j++) {
             sanctuary[i * j - 1].x = food.x + (i - 2);
             sanctuary[i * j - 1].y = food.y + (j - 2);
         }
@@ -417,7 +417,7 @@ void FoodOutput() {
             food.x = (rand() % 18 + 1) * 2;
             food.y = rand() % 18 + 1;
             for (i = 1; i <= 3; i++) { // food 주변 좌표 123/456/789 순이다.
-                for (j = 1; j <= 3; j++) {
+                for (int j = 1; j <= 3; j++) {
                     sanctuary[i * j - 1].x = food.x + (i - 2);
                     sanctuary[i * j - 1].y = food.y + (j - 2);
                 }
