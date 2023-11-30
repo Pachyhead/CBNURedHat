@@ -48,6 +48,13 @@ Component block;
 
 int mode = 0;
 
+typedef struct _sanctuary {
+    int xArray[3];
+    int yArray[3];
+} Sanctuary;
+
+Sanctuary sanctuary[20];
+
 typedef struct _logic
 {
     bool Up;
@@ -104,6 +111,8 @@ void Delete();
 void Output();
 void Move();
 void BlockOutput();
+void putInSanctuary(Component block); // 장애물이 생성될 수 없는 공간, 장애물을 포함한 3*3을 생성한다.
+bool isInSanctuary(Component block); // 장애물이 sanctuary에 있는지 check. 있으면 true, 없으면 false
 
 void FoodOutput();
 void Eat();
@@ -394,8 +403,6 @@ void BodyPlus()
     plusChecker = true;
 }
 
-Component sanctuary[9];
-
 void FoodOutput() {
     int length = snakeList->snakeLength;
 
@@ -464,6 +471,35 @@ void BlockOutput(int diff)
         blockArray[blockCount].y = block.y;
         blockCount += 1;
     }
+}
+
+void putInSanctuary(Component block) { // 장애물이 생성될 수 없는 공간, 장애물을 포함한 3*3을 생성한다.
+    for (int x = 0; x < 3; x++) {
+        sanctuary[blockCount].xArray[x] = block.x + 2 * (x - 1); // block의 x좌표를 포함한 3칸의 좌표를 저장
+    }
+    for (int y = 0; y < 3; y++) {
+        sanctuary[blockCount].yArray[y] = block.y + (y - 1); // block의 y좌표를 포함한 3칸의 좌표를 저장
+    }
+}
+
+bool isInSanctuary(Component block) { // 장애물이 sanctuary에 있는지 check. 있으면 true, 없으면 false
+    bool xChecker = false;
+
+    for (int count = 0; count <= blockCount; count++) {
+        for (int x = 0; x < 3; x++) {
+            if (block.x == sanctuary[count].xArray[x]) {
+                xChecker = true; // block의 x좌표가 sanctuary내에 존재하는지 check
+                break;
+            }
+            else xChecker = false;
+        }
+        if (xChecker) {
+            for (int y = 0; y < 3; y++) {
+                if (block.y == sanctuary[count].yArray[y]) return true; // block의 y좌표마저 sanctuary내에 존재한다면 return true
+            }
+        }
+    }
+    return false; // 위의 조건문에 안 걸리면, 없다는 의미이므로 return false
 }
 
 void Score()
