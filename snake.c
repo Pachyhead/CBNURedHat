@@ -113,6 +113,7 @@ void Move();
 void BlockOutput();
 void putInSanctuary(Component block); // 장애물이 생성될 수 없는 공간, 장애물을 포함한 3*3을 생성한다.
 bool isInSanctuary(Component block); // 장애물이 sanctuary에 있는지 check. 있으면 true, 없으면 false
+bool isInSnake(Component block); // 장애물이 snake의 좌표에 존재하는지 check. 있으면 true, 없으면 false
 
 void FoodOutput();
 void Eat();
@@ -442,26 +443,20 @@ Component blockArray[20] = { {0, 0} };
 void BlockOutput(int diff)
 {
     int ranCase;
-    int length = snakeList->snakeLength;
+    Component block = { 0,0 }; // 장애물 정의
 
-    ranCase = rand() % diff;
+    ranCase = rand() % diff; // 중요
     gotoxy(30, 30);
     printf("ranCase : %d ", ranCase);
     printf("blockCount : %d", blockCount);
 
     if (ranCase == 0 && blockCount < 20) {
-        block.x = (rand() % 18 + 1) * 2;
-        block.y = rand() % 18 + 1;
+        do {
+            block.x = (rand() % 18 + 1) * 2;
+            block.y = rand() % 18 + 1;
+        } while (isInSnake(block) || isInSanctuary(block));
 
-        for (int i = 0; i < length; i++) {
-            coord forTemp = getCoord(snakeList, i);
-
-            if (forTemp.x == block.x && forTemp.y == block.y)
-            {
-                block.x = (rand() % 18 + 1) * 2;
-                block.y = rand() % 18 + 1;
-            }
-        }
+        putInSanctuary(block);
 
         gotoxy(block.x, block.y);
         textColor(12);
@@ -500,6 +495,16 @@ bool isInSanctuary(Component block) { // 장애물이 sanctuary에 있는지 che
         }
     }
     return false; // 위의 조건문에 안 걸리면, 없다는 의미이므로 return false
+}
+
+bool isInSnake(Component block) { // 장애물이 snake에 있는지 check. 있으면 true, 없으면 false
+    int length = snakeList->snakeLength;
+
+    for (int i = 0; i < length; i++) {
+        coord forTemp = getCoord(snakeList, i);
+        if (forTemp.x == block.x && forTemp.y == block.y) return true;
+    }
+    return false;
 }
 
 void Score()
