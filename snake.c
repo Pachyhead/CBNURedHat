@@ -360,7 +360,13 @@ void Output()
     for (int i = 0; i < length; i++) {
         temp = getCoord(snakeList, i);
         gotoxy(temp.x, temp.y);
-        printf("■");
+
+        if (i == 0) { // 머리부분의 색깔을 dark yellow로 출력
+            textColor(6);
+            printf("■");
+            textColor(15);
+        }
+        else printf("■");
     }
 }
 
