@@ -35,8 +35,8 @@ int main(){
     for (int i = 0; i < 41; i++) {
         printf("■");
     }
-    int x = 2;  // 공의 초기 x 좌표
-    int y = 2;  // 공의 초기 y 좌표
+    int x = 18;  // 공의 초기 x 좌표
+    int y = 20;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
     int dy = 1; // 공을 아래쪽으로 이동시킴
     int bar1_x = 18; //왼쪽 막대 초기 x 좌표
