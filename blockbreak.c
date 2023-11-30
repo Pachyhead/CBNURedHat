@@ -21,6 +21,7 @@ int choose(){
     return stage;
 }
 int main(){
+    int stage=choose();
 
     for (int i = 0; i < 41; i++) {
         printf("■");
