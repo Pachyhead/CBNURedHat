@@ -533,7 +533,7 @@ void GameExplain()
     gotoxy(50, 16);
     puts("▶ 종료하려면 q를 누르세요");
 
-    gotoxy(50, 16);
+    gotoxy(50, 18);
     puts("▶ 20점을 넘으면 클리어입니다");
 }
 
