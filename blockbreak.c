@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <windows.h>
 
+void textcolor(int colorNum) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorNum);
+}
+
 void gotoxy(int x, int y) {//원하는 x,y좌표로 이동시키는 함수
     COORD pos = { x, y };
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
  
-int main(){
+int choose(){
     int st_intro_x=45;
     int st_intro_y=10;
     int st_choose_x=49;
@@ -18,10 +22,15 @@ int main(){
     printf("난이도를 선택하세요:");
     scanf("%d", &stage);
     system("cls");
+    return stage;
+}
 
+void wall(){
+    textcolor(9);//파란색
     for (int i = 0; i < 41; i++) {
         printf("■");
     }
+    textcolor(15);
     printf("\n");
     for (int i = 0; i < 25; i++) {
         printf("|");
@@ -32,11 +41,20 @@ int main(){
 
 
     }
+    textcolor(10);//초록색
     for (int i = 0; i < 41; i++) {
         printf("■");
     }
-    int x = 2;  // 공의 초기 x 좌표
-    int y = 2;  // 공의 초기 y 좌표
+    textcolor(15);
+
+}
+
+int main(){
+    int stage=choose();
+    wall();
+
+    int x = 18;  // 공의 초기 x 좌표
+    int y = 20;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
     int dy = 1; // 공을 아래쪽으로 이동시킴
     int bar1_x = 18; //왼쪽 막대 초기 x 좌표
@@ -49,6 +67,38 @@ int main(){
     int bar4_y = 23;
     int counttime;
     int count=1;
+    int block[7][40]; //블록 존재 여부 확인
+    int bx = 0, by = 0; //블록 좌표 변수 선언
+    int score = 0; //점수 변수 선언
+    for( int by = 0; by < 7; by++){
+        if (by == 0) {
+            textcolor(12);//red
+            }
+        if (by == 1) {
+            textcolor(6);//Dark yellow
+            }
+        if (by == 2) {
+            textcolor(10);//green
+            }
+        if (by == 3) {
+            textcolor(9);//blue
+            }
+        if (by == 4) {
+            textcolor(13);//purple
+            }
+        if (by == 5) {
+            textcolor(8);//dark gray
+            }
+        if (by == 6) {
+            textcolor(15);//White
+            }
+        for (int bx = 1; bx < 39; bx++) {
+            block[by][bx] = 1;
+            gotoxy(bx + 1, by + 1);
+            printf("▣");
+        }
+        textcolor(15);//White
+    }
     if (stage == 1) {
         counttime = 300;
     }
@@ -91,6 +141,32 @@ int main(){
 
         if (counttime == 0) {
             break;
+        }
+
+        for (by = 0; by < 7; by++) { //블록과 공이 충돌 시 블록 삭제
+            for (bx = 1; bx < 39; bx++) {
+                if (block[by][bx] != 0) {
+                    if (x == bx + 1 && y == by + 2) {
+                        if (x < 37) x++;//반복되지 않게 수정
+                        dy = 1;
+                        block[by][bx] = 0;
+                        gotoxy(bx + 1, by + 1);
+                        printf(" ");
+                        if (bx > 1) {
+                            block[by][bx - 1] = 0;
+                            gotoxy(bx, by + 1);
+                            printf(" ");
+                        }
+                        if (bx < 38) {
+                            block[by][bx + 1] = 0;
+                            gotoxy(bx + 2, by + 1);
+                            printf(" ");
+                        }
+                        score++;
+                        break;
+                    }
+                }
+            }
         }
 
         gotoxy(50, 1);
