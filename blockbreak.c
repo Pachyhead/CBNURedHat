@@ -298,22 +298,70 @@ int main(){
         if(y==25){//공이 바닥에 닿으면 게임종료
             break;
         }
-        if (x == bar1_x && y == bar1_y-1) {//공이 왼쪽 막대에 닿으면 왼쪽으로 보내기
+        if (x == bar1_x - 1 && y == bar1_y) {
             dx = -1;
             dy = -1;
-        }
-        if (x == bar2_x && y == bar2_y-1) {
+            }
+        if (x == bar1_x && y == bar1_y) {
             dx = -1;
             dy = -1;
-        }
-        if (x == bar3_x && y == bar3_y - 1) {//공이 왼쪽 막대에 닿으면 왼쪽으로 보내기
+            }
+        if (x == bar2_x && y == bar2_y) {
+            dx = -1;
+            dy = -1;
+            }
+        if (x == bar3_x && y == bar3_y) {
+            dx = -1;
+            dy = -1;
+            }
+        if (x == bar4_x && y == bar4_y) {
             dx = 1;
             dy = -1;
+            }
+        if (x == bar5_x && y == bar5_y) {
+            dx = 1;
+            dy = -1;
+            }
+        if (x == bar6_x && y == bar6_y) {
+            dx = 1;
+            dy = -1;
+            }
+        if (x == bar6_x + 1 && y == bar6_y) {
+            dx = 1;
+            dy = -1;
+            }
+        if (x == bar1_x - 1 && y == bar1_y - 1) {//공이 왼쪽 막대에 닿으면 왼쪽으로 보내기
+        dx = -1;
+        dy = -1;
+        }
+        if (x == bar1_x && y == bar1_y - 1) {//공이 왼쪽 막대에 닿으면 왼쪽으로 보내기
+        dx = -1;
+        dy = -1;
+        }
+        if (x == bar2_x && y == bar2_y - 1) {
+            dx = -1;
+            dy = -1;
+            }
+        if (x == bar3_x && y == bar3_y - 1) {//공이 왼쪽 막대에 닿으면 왼쪽으로 보내기
+        dx = -1;
+        dy = -1;
         }
         if (x == bar4_x && y == bar4_y - 1) {
             dx = 1;
             dy = -1;
+            }
+        if (x == bar5_x && y == bar5_y - 1) {//공이 왼쪽 막대에 닿으면 왼쪽으로 보내기
+        dx = 1;
+        dy = -1;
         }
+        if (x == bar6_x && y == bar6_y - 1) {
+            dx = 1;
+            dy = -1;
+            }
+        if (x == bar6_x + 1 && y == bar6_y - 1) {
+            dx = 1;
+            dy = -1;
+            }
         count++;
     }
     system("cls");
