@@ -215,12 +215,16 @@ int main(){
             bar2_x--;
             bar3_x--;
             bar4_x--;
+            bar5_x--;
+            bar6_x--;
         }
         if (GetAsyncKeyState(VK_RIGHT) & 0x8000) { // 막대 오른쪽으로 이동
             bar1_x++;
             bar2_x++;
             bar3_x++;
             bar4_x++;
+            bar5_x++;
+            bar6_x++;
         }
 
         gotoxy(x,y);
@@ -276,8 +280,12 @@ int main(){
         gotoxy(bar2_x, bar2_y);
         printf("O");
         gotoxy(bar3_x, bar3_y);
-        printf("O");//위치에 따라 오른쪽 막대 출력
-        gotoxy(bar4_x, bar4_y);
+        printf("O");
+        gotoxy(bar4_x, bar4_y);//위치에 따라 오른쪽 막대 출력
+        printf("O");
+        gotoxy(bar5_x, bar5_y);
+        printf("O");
+        gotoxy(bar6_x, bar6_y);
         printf("O");
         Sleep(50);//공이 이동하는 속도 조절
 
