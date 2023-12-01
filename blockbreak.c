@@ -103,7 +103,7 @@ int choose(){
     printf("1:쉬움   2:보통   3:어려움");
     gotoxy(st_choose_x, st_choose_y);
     printf("난이도를 선택하세요:");
-    scanf("%d", &stage);
+    scanf_s("%d", &stage);
     system("cls");
     return stage;
 }
