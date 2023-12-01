@@ -44,7 +44,23 @@ int choose(){
     gotoxy(40, 11);
     printf("■■■■■■■■");
 
-    
+    textcolor(10);
+    gotoxy(52, 5);
+    printf("  ■■■■■■■  ");
+    gotoxy(52, 6);
+    printf(" ■       ■");
+    gotoxy(52, 7);
+    printf("■■       ■■");
+    gotoxy(52, 8);
+    printf("■■       ■■");
+    gotoxy(52, 9);
+    printf("■■       ■■");
+    gotoxy(52, 10);
+    printf(" ■       ■");
+    gotoxy(52, 11);
+    printf("  ■■■■■■■");
+
+
     int st_intro_x=45;
     int st_intro_y=19;
     int st_choose_x=49;
