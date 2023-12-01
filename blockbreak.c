@@ -11,6 +11,22 @@ void gotoxy(int x, int y) {//원하는 x,y좌표로 이동시키는 함수
 }
  
 int choose(){
+    textcolor(4);
+    gotoxy(27, 5);
+    printf("■■■■■  ");
+    gotoxy(27, 6);
+    printf("■■    ■■  ");
+    gotoxy(27, 7);
+    printf("■■    ■■  ");
+    gotoxy(27, 8);
+    printf("■■■■■  ");
+    gotoxy(27, 9);
+    printf("■■    ■■  ");
+    gotoxy(27, 10);
+    printf("■■    ■■  ");
+    gotoxy(27, 11);
+    printf("■■■■■  ");
+    textcolor(15);
     int st_intro_x=45;
     int st_intro_y=19;
     int st_choose_x=49;
