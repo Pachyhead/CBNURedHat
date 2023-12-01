@@ -205,6 +205,10 @@ int main(){
         printf(" ");
         gotoxy(bar4_x, bar4_y);
         printf(" ");
+        gotoxy(bar5_x, bar5_y);
+        printf(" ");
+        gotoxy(bar6_x, bar6_y);
+        printf(" ");
         
         if (GetAsyncKeyState(VK_LEFT) & 0x8000) { // 막대 왼쪽으로 이동
             bar1_x--;
