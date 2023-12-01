@@ -60,6 +60,22 @@ int choose(){
     gotoxy(52, 11);
     printf("  ■■■■■■■");
 
+    textcolor(9);
+    gotoxy(67, 5);
+    printf("  ■■■■■■■  ");
+    gotoxy(67, 6);
+    printf(" ■       ■");
+    gotoxy(67, 7);
+    printf("■■       ");
+    gotoxy(67, 8);
+    printf("■■       ");
+    gotoxy(67, 9);
+    printf("■■       ■■");
+    gotoxy(67, 10);
+    printf(" ■       ■");
+    gotoxy(67, 11);
+    printf("  ■■■■■■■");
+
 
     int st_intro_x=45;
     int st_intro_y=19;
