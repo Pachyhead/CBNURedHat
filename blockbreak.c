@@ -140,14 +140,18 @@ int main(){
     int y = 20;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
     int dy = 1; // 공을 아래쪽으로 이동시킴
-    int bar1_x = 18; //왼쪽 막대 초기 x 좌표
+    int bar1_x = 17; //왼쪽 막대 초기 x 좌표
     int bar1_y = 23; //왼쪽 막대 초기 y 좌표
-    int bar2_x = 19;
+    int bar2_x = 18;
     int bar2_y = 23;
-    int bar3_x = 20; //오른쪽 막대 초기 x 좌표
-    int bar3_y = 23; //오른쪽 막대 초기 y 좌표
-    int bar4_x = 21;
-    int bar4_y = 23;
+    int bar3_x = 19;
+    int bar3_y = 23;
+    int bar4_x = 20;//오른쪽 막대 초기 x좌표
+    int bar4_y = 23;//오른쪽 막대 초기 y좌표
+    int bar5_x = 21;
+    int bar5_y = 23;
+    int bar6_x = 22;
+    int bar6_y = 23;
     int counttime;
     int count=1;
     int block[7][40]; //블록 존재 여부 확인
