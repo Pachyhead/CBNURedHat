@@ -12,7 +12,7 @@ void gotoxy(int x, int y) {//원하는 x,y좌표로 이동시키는 함수
  
 int choose(){
     int st_intro_x=45;
-    int st_intro_y=10;
+    int st_intro_y=19;
     int st_choose_x=49;
     int st_choose_y=20;
     int stage;
