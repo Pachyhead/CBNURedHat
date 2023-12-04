@@ -97,8 +97,32 @@ void confFood() {
 }
 
 void sLoop() {
+   int playing = 1;
+   char temp;
+   int x, y;
    snake.x = 8;
    snake.y = 7;
+   if (_kbhit()) {
+      temp = _getch();
+      switch (temp) {
+         case 'w':
+            map[y][x] = '0';
+            snake.y -= 1;
+            break;
+         case 'a':
+            map[y][x] = '0';
+            snake.x -= 1;
+            break;
+         case 's':
+            map[y][x] = '0';
+            snake.y += 1;
+            break;
+         case 'd':
+            map[y][x] = '0';
+            snake.x += 1;
+            break;
+      }
+   }
 }
 
 void gotoxy(int x, int y) {
