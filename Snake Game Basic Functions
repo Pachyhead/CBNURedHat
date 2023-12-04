@@ -102,26 +102,33 @@ void sLoop() {
    int x, y;
    snake.x = 8;
    snake.y = 7;
-   if (_kbhit()) {
-      temp = _getch();
-      switch (temp) {
-         case 'w':
-            map[y][x] = '0';
-            snake.y -= 1;
-            break;
-         case 'a':
-            map[y][x] = '0';
-            snake.x -= 1;
-            break;
-         case 's':
-            map[y][x] = '0';
-            snake.y += 1;
-            break;
-         case 'd':
-            map[y][x] = '0';
-            snake.x += 1;
-            break;
+
+    while (playing) {
+      x = snake.x; y = snake.y;
+      map[y][x] = 's';
+      drawMap(x, y);
+      if (_kbhit()) {
+         temp = _getch();
+         switch (temp) {
+            case 'w':
+               map[y][x] = '0';
+               snake.y -= 1;
+               break;
+            case 'a':
+               map[y][x] = '0';
+               snake.x -= 1;
+               break;
+            case 's':
+               map[y][x] = '0';
+               snake.y += 1;
+               break;
+            case 'd':
+               map[y][x] = '0';
+               snake.x += 1;
+               break;
+         }
       }
+      if (snake.x == 0 || snake.x == 16 || snake.y == 0 || snake.y == 16) playing = 0;
    }
 }
 
