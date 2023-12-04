@@ -4,11 +4,15 @@
 
 void init();
 void gotoxy(int x, int y);
+void drawMap(int x, int y);
 
 typedef struct posi {
    int x;
    int y;
 } Posi;
+
+Posi snake;
+Posi food;
 
 char map[17][17] = { 
    {"11111111111111111"},
@@ -36,6 +40,24 @@ void init() {
    ConsoleCursor.bVisible = 0;
    ConsoleCursor.dwSize = 1;
    SetConsoleCursorInfo(consoleHandle, &ConsoleCursor);
+}
+
+void drawMap(int x, int y) {
+   system("cls");
+   int col, line;
+   gotoxy(0, 0);
+   for (line = 0; line < 17; line++) {
+      for (col = 0; col < 17; col++) {
+         char temp = map[line][col];
+         if (temp == '1') printf("▣");
+         else if (temp == '0') printf("  ");
+         else if (temp == 's') printf("ss");
+         else if (temp == 'f') printf("ㅇ");
+      }
+      printf("\n");
+   }
+
+   Sleep(150);
 }
 
 void gotoxy(int x, int y) {
