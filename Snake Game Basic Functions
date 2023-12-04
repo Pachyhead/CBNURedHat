@@ -21,6 +21,7 @@ typedef struct posi {
 Posi snake;
 Posi food;
 
+int score = -1;
 char map[17][17] = { 
    {"11111111111111111"},
    {"10000000000000001"},
@@ -53,6 +54,8 @@ void drawMap(int x, int y) {
    system("cls");
    int col, line;
    confFood();
+   gotoxy(45, 2);
+   printf("Score = %d", score);
    gotoxy(0, 0);
    for (line = 0; line < 17; line++) {
       for (col = 0; col < 17; col++) {
@@ -92,6 +95,7 @@ void confFood() {
    if (count > 0) food.exist = true;
    else {
       food.exist = false;
+      score++;
       creatFood();
    }
 }
@@ -141,6 +145,5 @@ int main(void) {
    init();
    food.exist = false;
    sLoop();
-   printf("스네이크 게임");
    return 0;
 }
