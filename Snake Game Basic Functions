@@ -10,6 +10,7 @@ void gotoxy(int x, int y);
 void drawMap(int x, int y);
 void creatFood();
 void confFood();
+void sLoop();
 
 typedef struct posi {
    int x;
@@ -95,6 +96,11 @@ void confFood() {
    }
 }
 
+void sLoop() {
+   snake.x = 8;
+   snake.y = 7;
+}
+
 void gotoxy(int x, int y) {
    COORD pos = { x,y };
    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
@@ -103,7 +109,7 @@ void gotoxy(int x, int y) {
 int main(void) {
    init();
    food.exist = false;
-   drawMap();
+   sLoop();
    printf("스네이크 게임");
    return 0;
 }
