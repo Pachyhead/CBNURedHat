@@ -5,6 +5,11 @@
 void init();
 void gotoxy(int x, int y);
 
+typedef struct posi {
+   int x;
+   int y;
+} Posi;
+
 char map[17][17] = { 
    {"11111111111111111"},
    {"10000000000000001"},
