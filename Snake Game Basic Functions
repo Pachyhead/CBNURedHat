@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <conio.h>
+#include <windows.h>
+
+void init();
+
+void init() {
+   HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+   CONSOLE_CURSOR_INFO ConsoleCursor;
+   ConsoleCursor.bVisible = 0;
+   ConsoleCursor.dwSize = 1;
+   SetConsoleCursorInfo(consoleHandle, &ConsoleCursor);
+}
+
+int main(void) {
+   init();
+   printf("스네이크 게임");
+   return 0;
+}
