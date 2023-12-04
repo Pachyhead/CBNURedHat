@@ -24,7 +24,7 @@ typedef struct _listNode {
     struct _listNode* link;
 } listNode;
 
-// ì—°ê²° ë¦¬ìŠ¤íŠ¸ì˜ ë³€ìˆ˜ë“¤ì„ ì •ì˜í•˜ëŠ” ê³µê°„ì´ë‹¤. í˜„ìž¬ëŠ” ë±€ì˜ ê¸¸ì´ ì •ë³´ë¥¼ ì •ì˜í•˜ê³  ìžˆë‹¤.
+// ¿¬°á ¸®½ºÆ®ÀÇ º¯¼öµéÀ» Á¤ÀÇÇÏ´Â °ø°£ÀÌ´Ù. ÇöÀç´Â ¹ìÀÇ ±æÀÌ Á¤º¸¸¦ Á¤ÀÇÇÏ°í ÀÖ´Ù.
 typedef struct _linkedList {
     int snakeLength;
     struct _listNode* link;
@@ -92,14 +92,14 @@ int map[20][20] =
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
-linkedList* createList(); // ì—°ê²° ë¦¬ìŠ¤íŠ¸ ìƒì„± í•¨ìˆ˜
-void add(linkedList* list, coord value); // ì—°ê²° ë¦¬ìŠ¤íŠ¸ì— ë…¸ë“œë¥¼ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
-bool printList(linkedList* list); // ì—°ê²° ë¦¬ìŠ¤íŠ¸ ì „ì²´ë¥¼ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
-void freeList(linkedList* list); // ì—°ê²° ë¦¬ìŠ¤íŠ¸ì˜ ëª¨ë“  ë…¸ë“œë“¤ì„ freeí•˜ëŠ” í•¨ìˆ˜
-void delLast(linkedList* list); // ë§ˆì§€ë§‰ ë…¸ë“œë¥¼ ì œê±°í•˜ëŠ” í•¨ìˆ˜
-void insert0(linkedList* list, coord value); // ë§¨ ì•ž(index 0)ì— ë…¸ë“œë¥¼ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
-coord getCoord(linkedList* list, int index); // ì§€ì •ëœ indexì˜ ì¢Œí‘œë¥¼ ì–»ì–´ì˜¤ëŠ” í•¨ìˆ˜
-void insertLast(linkedList* list, coord value); // ë§¨ ë’¤ì— ë…¸ë“œë¥¼ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜
+linkedList* createList(); // ¿¬°á ¸®½ºÆ® »ý¼º ÇÔ¼ö
+void add(linkedList* list, coord value); // ¿¬°á ¸®½ºÆ®¿¡ ³ëµå¸¦ Ãß°¡ÇÏ´Â ÇÔ¼ö
+bool printList(linkedList* list); // ¿¬°á ¸®½ºÆ® ÀüÃ¼¸¦ Ãâ·ÂÇÏ´Â ÇÔ¼ö
+void freeList(linkedList* list); // ¿¬°á ¸®½ºÆ®ÀÇ ¸ðµç ³ëµåµéÀ» freeÇÏ´Â ÇÔ¼ö
+void delLast(linkedList* list); // ¸¶Áö¸· ³ëµå¸¦ Á¦°ÅÇÏ´Â ÇÔ¼ö
+void insert0(linkedList* list, coord value); // ¸Ç ¾Õ(index 0)¿¡ ³ëµå¸¦ Ãß°¡ÇÏ´Â ÇÔ¼ö
+coord getCoord(linkedList* list, int index); // ÁöÁ¤µÈ indexÀÇ ÁÂÇ¥¸¦ ¾ò¾î¿À´Â ÇÔ¼ö
+void insertLast(linkedList* list, coord value); // ¸Ç µÚ¿¡ ³ëµå¸¦ Ãß°¡ÇÏ´Â ÇÔ¼ö
 
 void Map();
 void Init();
@@ -111,11 +111,12 @@ void Delete();
 void Output();
 void Move();
 void BlockOutput();
-void putInSanctuary(Component block); // ìž¥ì• ë¬¼ì´ ìƒì„±ë  ìˆ˜ ì—†ëŠ” ê³µê°„, ìž¥ì• ë¬¼ì„ í¬í•¨í•œ 3*3ì„ ìƒì„±í•œë‹¤.
-bool isInSanctuary(Component block); // ìž¥ì• ë¬¼ì´ sanctuaryì— ìžˆëŠ”ì§€ check. ìžˆìœ¼ë©´ true, ì—†ìœ¼ë©´ false
-bool isInSnake(Component block); // ìž¥ì• ë¬¼ì´ snakeì˜ ì¢Œí‘œì— ì¡´ìž¬í•˜ëŠ”ì§€ check. ìžˆìœ¼ë©´ true, ì—†ìœ¼ë©´ false
-void printSanctuary(Component block, bool toggle); // sanctuaryë¥¼ í™”ë©´ì— ì¶œë ¥í•´ë³´ëŠ” í•¨ìˆ˜
-bool isInBlockArray(Component block); // blockì´ blockArray ë‚´ì— ì¡´ìž¬í•˜ëŠ”ì§€ check.
+void putInSanctuary(Component block); // Àå¾Ö¹°ÀÌ »ý¼ºµÉ ¼ö ¾ø´Â °ø°£, Àå¾Ö¹°À» Æ÷ÇÔÇÑ 3*3À» »ý¼ºÇÑ´Ù.
+bool isInSanctuary(Component block); // Àå¾Ö¹°ÀÌ sanctuary¿¡ ÀÖ´ÂÁö check. ÀÖÀ¸¸é true, ¾øÀ¸¸é false
+bool isInSnake(Component block); // Àå¾Ö¹°ÀÌ snakeÀÇ ÁÂÇ¥¿¡ Á¸ÀçÇÏ´ÂÁö check. ÀÖÀ¸¸é true, ¾øÀ¸¸é false
+void printSanctuary(Component block, bool toggle); // sanctuary¸¦ È­¸é¿¡ Ãâ·ÂÇØº¸´Â ÇÔ¼ö
+bool isInBlockArray(Component block); // blockÀÌ blockArray ³»¿¡ Á¸ÀçÇÏ´ÂÁö check.
+bool isAtFood(Component block, Component food); //blockÀÌ foodÀÇ ÁÂÇ¥¿¡ »ý¼ºµÇ¾ú´ÂÁö check.
 
 void FoodOutput();
 void Eat();
@@ -128,7 +129,7 @@ void GameOver();
 void GameExplain();
 
 void gotoxy(int x, int y);
-void CursorView(char show);//ì»¤ì„œìˆ¨ê¸°ê¸°
+void CursorView(char show);//Ä¿¼­¼û±â±â
 
 linkedList* createList(void) { //
     linkedList* list = (linkedList*)malloc(sizeof(linkedList));
@@ -140,17 +141,17 @@ linkedList* createList(void) { //
 }
 
 void add(linkedList* list, coord value) { //
-    listNode* newNode = (listNode*)malloc(sizeof(listNode)); // ìƒˆë¡œìš´ ë…¸ë“œ ë™ì  í• ë‹¹
+    listNode* newNode = (listNode*)malloc(sizeof(listNode)); // »õ·Î¿î ³ëµå µ¿Àû ÇÒ´ç
     if (!newNode) {
-        fprintf(stderr, "ë©”ëª¨ë¦¬ í• ë‹¹ ì˜¤ë¥˜\n");
+        fprintf(stderr, "¸Þ¸ð¸® ÇÒ´ç ¿À·ù\n");
         exit(EXIT_FAILURE);
     }
 
-    newNode->data = value; // ìƒˆë¡œìš´ ë…¸ë“œì˜ ë°ì´í„° ì„¤ì •
-    newNode->link = NULL;  // ìƒˆë¡œìš´ ë…¸ë“œì˜ ë§í¬ ì´ˆê¸°í™”
+    newNode->data = value; // »õ·Î¿î ³ëµåÀÇ µ¥ÀÌÅÍ ¼³Á¤
+    newNode->link = NULL;  // »õ·Î¿î ³ëµåÀÇ ¸µÅ© ÃÊ±âÈ­
 
-    // í—¤ë“œë¶€í„° ì‹œìž‘í•´ì„œ ë§¨ ëê¹Œì§€ ì´ë™
-    if (list->link == NULL) { // ë¦¬ìŠ¤íŠ¸ì— ë…¸ë“œê°€ ì—†ì„ ë•Œ
+    // ÇìµåºÎÅÍ ½ÃÀÛÇØ¼­ ¸Ç ³¡±îÁö ÀÌµ¿
+    if (list->link == NULL) { // ¸®½ºÆ®¿¡ ³ëµå°¡ ¾øÀ» ¶§
         list->link = newNode;
         list->snakeLength += 1;
     }
@@ -160,19 +161,19 @@ void add(linkedList* list, coord value) { //
             if (current->link == NULL) break;
             current = current->link;
         }
-        // ë§¨ ëì— ìƒˆë¡œìš´ ë…¸ë“œ ì¶”ê°€
+        // ¸Ç ³¡¿¡ »õ·Î¿î ³ëµå Ãß°¡
         current->link = newNode;
         list->snakeLength += 1;
     }
 }
 
-// ì—°ê²° ë¦¬ìŠ¤íŠ¸ ì¶œë ¥ í•¨ìˆ˜
+// ¿¬°á ¸®½ºÆ® Ãâ·Â ÇÔ¼ö
 bool printList(linkedList* list) {
-    // í—¤ë“œë¶€í„° ì‹œìž‘í•´ì„œ ë§¨ ëê¹Œì§€ ì´ë™
-    if (list->link == NULL) { // ë…¸ë“œê°€ 1ê°œì¼ ë•Œ
+    // ÇìµåºÎÅÍ ½ÃÀÛÇØ¼­ ¸Ç ³¡±îÁö ÀÌµ¿
+    if (list->link == NULL) { // ³ëµå°¡ 1°³ÀÏ ¶§
         return false;
     }
-    else { // ë…¸ë“œê°€ 2ê°œ ì´ìƒì¼ ë•Œ
+    else { // ³ëµå°¡ 2°³ ÀÌ»óÀÏ ¶§
         listNode* current = list->link;
         while (current) {
             printf("(%d, %d) ", current->data.x, current->data.y);
@@ -182,7 +183,7 @@ bool printList(linkedList* list) {
     }
 }
 
-// ì—°ê²° ë¦¬ìŠ¤íŠ¸ ë©”ëª¨ë¦¬ í•´ì œ í•¨ìˆ˜
+// ¿¬°á ¸®½ºÆ® ¸Þ¸ð¸® ÇØÁ¦ ÇÔ¼ö
 void freeList(linkedList* list) {
     if (list->link == NULL) {
         free(list);
@@ -198,10 +199,10 @@ void freeList(linkedList* list) {
     }
 }
 
-// ì—°ê²° ë¦¬ìŠ¤íŠ¸ ë§ˆì§€ë§‰ ë…¸ë“œ ì‚­ì œ í•¨ìˆ˜
+// ¿¬°á ¸®½ºÆ® ¸¶Áö¸· ³ëµå »èÁ¦ ÇÔ¼ö
 void delLast(linkedList* list) {
     if (list->link == NULL) {
-        fprintf(stderr, "ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ìžˆìŠµë‹ˆë‹¤.\n");
+        fprintf(stderr, "¸®½ºÆ®°¡ ºñ¾îÀÖ½À´Ï´Ù.\n");
     }
     else if (list->link->link == NULL) {
         free(list->link);
@@ -220,21 +221,21 @@ void delLast(linkedList* list) {
 }
 
 void insert0(linkedList* list, coord value) {
-    listNode* newNode = (listNode*)malloc(sizeof(listNode)); // ìƒˆë¡œìš´ ë…¸ë“œ ë™ì  í• ë‹¹
+    listNode* newNode = (listNode*)malloc(sizeof(listNode)); // »õ·Î¿î ³ëµå µ¿Àû ÇÒ´ç
     if (!newNode) {
-        fprintf(stderr, "ë©”ëª¨ë¦¬ í• ë‹¹ ì˜¤ë¥˜\n");
+        fprintf(stderr, "¸Þ¸ð¸® ÇÒ´ç ¿À·ù\n");
         exit(EXIT_FAILURE);
     }
 
-    newNode->data = value; // ìƒˆë¡œìš´ ë…¸ë“œì˜ ë°ì´í„° ì„¤ì •
-    newNode->link = NULL;  // ìƒˆë¡œìš´ ë…¸ë“œì˜ ë§í¬ ì´ˆê¸°í™”
+    newNode->data = value; // »õ·Î¿î ³ëµåÀÇ µ¥ÀÌÅÍ ¼³Á¤
+    newNode->link = NULL;  // »õ·Î¿î ³ëµåÀÇ ¸µÅ© ÃÊ±âÈ­
 
-    // í—¤ë“œë¶€í„° ì‹œìž‘í•´ì„œ ë§¨ ëê¹Œì§€ ì´ë™
-    if (list->link == NULL) { // ë…¸ë“œê°€ 1ê°œì¼ ë•Œ(head->linkë¶€í„° ì¶œë°œí•˜ëŠ” ì´ìœ ëŠ” headëŠ” nullì´ ë  ìˆ˜ ì—†ê¸° ë•Œë¬¸ì´ë‹¤.)
+    // ÇìµåºÎÅÍ ½ÃÀÛÇØ¼­ ¸Ç ³¡±îÁö ÀÌµ¿
+    if (list->link == NULL) { // ³ëµå°¡ 1°³ÀÏ ¶§(head->linkºÎÅÍ Ãâ¹ßÇÏ´Â ÀÌÀ¯´Â head´Â nullÀÌ µÉ ¼ö ¾ø±â ¶§¹®ÀÌ´Ù.)
         list->link = newNode;
         list->snakeLength += 1;
     }
-    else { // ë…¸ë“œê°€ 2ê°œ ì´ìƒì¼ ë•Œ 
+    else { // ³ëµå°¡ 2°³ ÀÌ»óÀÏ ¶§ 
         listNode* tempNode = (listNode*)malloc(sizeof(listNode));
         tempNode = list->link;
         list->link = newNode;
@@ -258,12 +259,12 @@ void insertLast(linkedList* list, coord value) {
     listNode* newNode = (listNode*)malloc(sizeof(listNode));
 
     if (!newNode) {
-        fprintf(stderr, "ë©”ëª¨ë¦¬ í• ë‹¹ ì˜¤ë¥˜\n");
+        fprintf(stderr, "¸Þ¸ð¸® ÇÒ´ç ¿À·ù\n");
         exit(EXIT_FAILURE);
     }
 
-    newNode->data = value; // ìƒˆë¡œìš´ ë…¸ë“œì˜ ë°ì´í„° ì„¤ì •
-    newNode->link = NULL;  // ìƒˆë¡œìš´ ë…¸ë“œì˜ ë§í¬ ì´ˆê¸°í™”
+    newNode->data = value; // »õ·Î¿î ³ëµåÀÇ µ¥ÀÌÅÍ ¼³Á¤
+    newNode->link = NULL;  // »õ·Î¿î ³ëµåÀÇ ¸µÅ© ÃÊ±âÈ­
 
     if (list->link == NULL) {
         list->link = newNode;
@@ -286,7 +287,7 @@ void Map()
         for (int j = 0; j < MAPWIDTH; j++)
         {
             if (map[i][j] == 1)
-                printf("â–£");
+                printf("¢Ã");
             else
                 printf("  ");
         }
@@ -374,12 +375,12 @@ void Output()
         temp = getCoord(snakeList, i);
         gotoxy(temp.x, temp.y);
 
-        if (i == 0) { // ë¨¸ë¦¬ë¶€ë¶„ì˜ ìƒ‰ê¹”ì„ dark yellowë¡œ ì¶œë ¥
+        if (i == 0) { // ¸Ó¸®ºÎºÐÀÇ »ö±òÀ» dark yellow·Î Ãâ·Â
             textColor(6);
-            printf("â– ");
+            printf("¡á");
             textColor(15);
         }
-        else printf("â– ");
+        else printf("¡á");
     }
 }
 
@@ -424,7 +425,7 @@ void FoodOutput() {
 
     gotoxy(food.x, food.y);
     textColor(14);
-    printf("â˜…");
+    printf("¡Ú");
     textColor(15);
 }
 
@@ -445,9 +446,9 @@ Component blockArray[20] = { {0, 0} };
 void BlockOutput(int diff)
 {
     int ranCase;
-    Component block = { 0,0 }; // ìž¥ì• ë¬¼ ì •ì˜
+    Component block = { 0,0 }; // Àå¾Ö¹° Á¤ÀÇ
 
-    ranCase = rand() % diff; // ì¤‘ìš”
+    ranCase = rand() % diff; // Áß¿ä
     gotoxy(30, 30);
     printf("ranCase : %d ", ranCase);
     printf("blockCount : %d", blockCount);
@@ -456,14 +457,14 @@ void BlockOutput(int diff)
         do {
             block.x = (rand() % 18 + 1) * 2;
             block.y = rand() % 18 + 1;
-        } while (isInSnake(block) || isInSanctuary(block));
+        } while (isInSnake(block) || isInSanctuary(block) || isAtFood(block, food));
 
         putInSanctuary(block);
-        printSanctuary(block, false); // sanctuaryë¥¼ í™”ë©´ì— í‘œì‹œí• ì§€ true, falseë¥¼ í†µí•´ ì„ íƒ
+        printSanctuary(block, false); // sanctuary¸¦ È­¸é¿¡ Ç¥½ÃÇÒÁö true, false¸¦ ÅëÇØ ¼±ÅÃ
 
         gotoxy(block.x, block.y);
         textColor(12);
-        printf("â–£");
+        printf("¢Ã");
         textColor(15);
         blockArray[blockCount].x = block.x;
         blockArray[blockCount].y = block.y;
@@ -471,36 +472,36 @@ void BlockOutput(int diff)
     }
 }
 
-void putInSanctuary(Component block) { // ìž¥ì• ë¬¼ì´ ìƒì„±ë  ìˆ˜ ì—†ëŠ” ê³µê°„, ìž¥ì• ë¬¼ì„ í¬í•¨í•œ 3*3ì„ ìƒì„±í•œë‹¤.
+void putInSanctuary(Component block) { // Àå¾Ö¹°ÀÌ »ý¼ºµÉ ¼ö ¾ø´Â °ø°£, Àå¾Ö¹°À» Æ÷ÇÔÇÑ 3*3À» »ý¼ºÇÑ´Ù.
     for (int x = 0; x < 3; x++) {
-        sanctuary[blockCount].xArray[x] = block.x + 2 * (x - 1); // blockì˜ xì¢Œí‘œë¥¼ í¬í•¨í•œ 3ì¹¸ì˜ ì¢Œí‘œë¥¼ ì €ìž¥
+        sanctuary[blockCount].xArray[x] = block.x + 2 * (x - 1); // blockÀÇ xÁÂÇ¥¸¦ Æ÷ÇÔÇÑ 3Ä­ÀÇ ÁÂÇ¥¸¦ ÀúÀå
     }
     for (int y = 0; y < 3; y++) {
-        sanctuary[blockCount].yArray[y] = block.y + (y - 1); // blockì˜ yì¢Œí‘œë¥¼ í¬í•¨í•œ 3ì¹¸ì˜ ì¢Œí‘œë¥¼ ì €ìž¥
+        sanctuary[blockCount].yArray[y] = block.y + (y - 1); // blockÀÇ yÁÂÇ¥¸¦ Æ÷ÇÔÇÑ 3Ä­ÀÇ ÁÂÇ¥¸¦ ÀúÀå
     }
 }
 
-bool isInSanctuary(Component block) { // ìž¥ì• ë¬¼ì´ sanctuaryì— ìžˆëŠ”ì§€ check. ìžˆìœ¼ë©´ true, ì—†ìœ¼ë©´ false
+bool isInSanctuary(Component block) { // Àå¾Ö¹°ÀÌ sanctuary¿¡ ÀÖ´ÂÁö check. ÀÖÀ¸¸é true, ¾øÀ¸¸é false
     bool xChecker = false;
 
     for (int count = 0; count <= blockCount; count++) {
         for (int x = 0; x < 3; x++) {
             if (block.x == sanctuary[count].xArray[x]) {
-                xChecker = true; // blockì˜ xì¢Œí‘œê°€ sanctuaryë‚´ì— ì¡´ìž¬í•˜ëŠ”ì§€ check
+                xChecker = true; // blockÀÇ xÁÂÇ¥°¡ sanctuary³»¿¡ Á¸ÀçÇÏ´ÂÁö check
                 break;
             }
             else xChecker = false;
         }
         if (xChecker) {
             for (int y = 0; y < 3; y++) {
-                if (block.y == sanctuary[count].yArray[y]) return true; // blockì˜ yì¢Œí‘œë§ˆì € sanctuaryë‚´ì— ì¡´ìž¬í•œë‹¤ë©´ return true
+                if (block.y == sanctuary[count].yArray[y]) return true; // blockÀÇ yÁÂÇ¥¸¶Àú sanctuary³»¿¡ Á¸ÀçÇÑ´Ù¸é return true
             }
         }
     }
-    return false; // ìœ„ì˜ ì¡°ê±´ë¬¸ì— ì•ˆ ê±¸ë¦¬ë©´, ì—†ë‹¤ëŠ” ì˜ë¯¸ì´ë¯€ë¡œ return false
+    return false; // À§ÀÇ Á¶°Ç¹®¿¡ ¾È °É¸®¸é, ¾ø´Ù´Â ÀÇ¹ÌÀÌ¹Ç·Î return false
 }
 
-bool isInSnake(Component block) { // ìž¥ì• ë¬¼ì´ snakeì— ìžˆëŠ”ì§€ check. ìžˆìœ¼ë©´ true, ì—†ìœ¼ë©´ false
+bool isInSnake(Component block) { // Àå¾Ö¹°ÀÌ snake¿¡ ÀÖ´ÂÁö check. ÀÖÀ¸¸é true, ¾øÀ¸¸é false
     int length = snakeList->snakeLength;
 
     for (int i = 0; i < length; i++) {
@@ -520,7 +521,7 @@ void printSanctuary(Component block, bool toggle) {
                     Component tempBlock = { tempX, tempY };
                     if (!isInBlockArray(tempBlock)) {
                         gotoxy(tempX, tempY);
-                        printf("â—");
+                        printf("¡Ü");
                     }
                 }
             }
@@ -537,12 +538,17 @@ bool isInBlockArray(Component block) {
     return false;
 }
 
+bool isAtFood(Component block, Component food) { // new
+    if (block.x == food.x && block.y == food.y) return true;
+    else return false;
+}
+
 void Score()
 {
     static int score = 0;
     score += 1;
     gotoxy(0, 20);
-    printf("ì ìˆ˜ : %d", score);
+    printf("Á¡¼ö : %d", score);
     if (score == 20)
         Clear();
 }
@@ -555,14 +561,14 @@ void GameOver()
     if (temp.x >= 38 || temp.x <= 0)
     {
         system("cls");
-        printf("ê²Œìž„ ì˜¤ë²„");
+        printf("°ÔÀÓ ¿À¹ö");
         exit(0);
     }
 
     if (temp.y >= 19 || temp.y <= 0)
     {
         system("cls");
-        printf("ê²Œìž„ ì˜¤ë²„");
+        printf("°ÔÀÓ ¿À¹ö");
         exit(0);
     }
 
@@ -571,7 +577,7 @@ void GameOver()
         if (temp.x == blockArray[i].x && temp.y == blockArray[i].y)
         {
             system("cls");
-            printf("ê²Œìž„ ì˜¤ë²„");
+            printf("°ÔÀÓ ¿À¹ö");
             exit(0);
         }
     }
@@ -581,7 +587,7 @@ void GameOver()
 
         if (temp.x == forTemp.x && temp.y == forTemp.y) {
             system("cls");
-            printf("ê²Œìž„ ì˜¤ë²„");
+            printf("°ÔÀÓ ¿À¹ö");
             exit(0);
         }
     }
@@ -590,28 +596,28 @@ void GameOver()
 void GameExplain()
 {
     gotoxy(50, 8);
-    puts("â–¶ ë°©í–¥í‚¤: ì´ë™");
+    puts("¢º ¹æÇâÅ°: ÀÌµ¿");
 
     gotoxy(50, 10);
-    puts("â–¶ ì‹œìž‘í•˜ë ¤ë©´ ì˜¤ë¥¸ìª½ ë°©í–¥í‚¤ë¥¼ ëˆ„ë¥´ì„¸ìš”");
+    puts("¢º ½ÃÀÛÇÏ·Á¸é ¿À¸¥ÂÊ ¹æÇâÅ°¸¦ ´©¸£¼¼¿ä");
 
     gotoxy(50, 12);
-    puts("â–¶ ë¨¸ë¦¬ê°€ ëª¸ì´ë‚˜ ë²½ì— ë‹¿ì„ì‹œ ê²Œìž„ì˜¤ë²„ìž…ë‹ˆë‹¤");
+    puts("¢º ¸Ó¸®°¡ ¸öÀÌ³ª º®¿¡ ´êÀ»½Ã °ÔÀÓ¿À¹öÀÔ´Ï´Ù");
 
     gotoxy(50, 14);
-    puts("â–¶ â˜…ë¥¼ ë¨¹ìœ¼ë©´ ë±€ì˜ ê¸¸ì´ê°€ ëŠ˜ì–´ë‚˜ê³  ì ìˆ˜ê°€ 1ì  ì¶”ê°€ë©ë‹ˆë‹¤");
+    puts("¢º ¡Ú¸¦ ¸ÔÀ¸¸é ¹ìÀÇ ±æÀÌ°¡ ´Ã¾î³ª°í Á¡¼ö°¡ 1Á¡ Ãß°¡µË´Ï´Ù");
 
     gotoxy(50, 16);
-    puts("â–¶ ì¢…ë£Œí•˜ë ¤ë©´ që¥¼ ëˆ„ë¥´ì„¸ìš”");
+    puts("¢º Á¾·áÇÏ·Á¸é q¸¦ ´©¸£¼¼¿ä");
 
     gotoxy(50, 18);
-    puts("â–¶ 20ì ì„ ë„˜ìœ¼ë©´ í´ë¦¬ì–´ìž…ë‹ˆë‹¤");
+    puts("¢º 20Á¡À» ³ÑÀ¸¸é Å¬¸®¾îÀÔ´Ï´Ù");
 }
 
 void Clear()
 {
     system("cls");
-    printf("í´ë¦¬ì–´");
+    printf("Å¬¸®¾î");
     exit(0);
 }
 
@@ -619,15 +625,15 @@ int choiceGame() {
     int playing = 1;
     while (playing) {
         gotoxy(25, 10);
-        printf("â– â– â– â– â–    â–       â–        â–        â–     â–   â– â– â– â– â– ");
+        printf("¡á¡á¡á¡á¡á   ¡á      ¡á       ¡á       ¡á    ¡á  ¡á¡á¡á¡á¡á");
         gotoxy(25, 11);
-        printf("â–            â– â–     â–      â–   â–      â–   â–     â– ");
+        printf("¡á           ¡á¡á    ¡á     ¡á  ¡á     ¡á  ¡á    ¡á");
         gotoxy(25, 12);
-        printf("â– â– â– â– â–    â–   â–   â–    â– â– â– â– â–    â– â–       â– â– â– â– â– ");
+        printf("¡á¡á¡á¡á¡á   ¡á  ¡á  ¡á   ¡á¡á¡á¡á¡á   ¡á¡á      ¡á¡á¡á¡á¡á");
         gotoxy(25, 13);
-        printf("        â–    â–     â– â–    â–       â–    â–   â–     â– ");
+        printf("        ¡á   ¡á    ¡á¡á   ¡á      ¡á   ¡á  ¡á    ¡á");
         gotoxy(25, 14);
-        printf("â– â– â– â– â–    â–       â–    â–       â–    â–     â–   â– â– â– â– â–    Game");
+        printf("¡á¡á¡á¡á¡á   ¡á      ¡á   ¡á      ¡á   ¡á    ¡á  ¡á¡á¡á¡á¡á   Game");
         gotoxy(90, 17);
         printf("1. easy mode");
         gotoxy(90, 18);
@@ -642,7 +648,7 @@ int choiceGame() {
             gotoxy(67, 25);
             printf("       ");
             gotoxy(44, 26);
-            printf("1~3 ì‚¬ì´ì— ìˆ«ìžë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”.");
+            printf("1~3 »çÀÌ¿¡ ¼ýÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
             continue;
         }
         if (mode != 0) playing = 0;
@@ -761,7 +767,7 @@ void gotoxy(int x, int y)
     COORD Pos = { x, y };
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
-void CursorView(char show)//ì»¤ì„œìˆ¨ê¸°ê¸°
+void CursorView(char show)//Ä¿¼­¼û±â±â
 {
     HANDLE hConsole;
     CONSOLE_CURSOR_INFO ConsoleCursor;
