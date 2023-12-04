@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
 void init();
 void gotoxy(int x, int y);
@@ -12,6 +13,7 @@ void creatFood();
 typedef struct posi {
    int x;
    int y;
+   bool exist;
 } Posi;
 
 Posi snake;
@@ -72,6 +74,7 @@ void creatFood() {
    y = food.y;
    if (map[y][x] == '0') {
       map[y][x] = 'f';
+      food.exist = true;
    }
 }
 
