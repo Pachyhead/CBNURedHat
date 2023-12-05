@@ -186,7 +186,9 @@ int main(){
         }
         textcolor(15);//White
     }
-
+    if (stage == 1) {
+        counttime = 600;
+    }
     if (stage == 2) {
         counttime = 300;
     }
