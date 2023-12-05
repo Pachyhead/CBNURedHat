@@ -100,7 +100,7 @@ int choose(){
     int st_choose_y=20;
     int stage;
     gotoxy(st_intro_x, st_intro_y);
-    printf("1:쉬움   2:보통   3:어려움");
+    printf("1:튜토리얼   2:쉬움   3:보통   4:어려움");
     gotoxy(st_choose_x, st_choose_y);
     printf("난이도를 선택하세요:");
     scanf_s("%d", &stage);
@@ -186,14 +186,15 @@ int main(){
         }
         textcolor(15);//White
     }
-    if (stage == 1) {
+
+    if (stage == 2) {
         counttime = 300;
     }
-    else if (stage == 2) {
+    else if (stage == 3) {
         counttime = 180;
     }
 
-    else if (stage == 3) {
+    else if (stage == 4) {
         counttime = 60;
     }
     while(1){
