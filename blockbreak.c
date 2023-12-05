@@ -94,7 +94,7 @@ int choose(){
     textcolor(15);
 
 
-    int st_intro_x=45;
+    int st_intro_x=40;
     int st_intro_y=19;
     int st_choose_x=49;
     int st_choose_y=20;
@@ -196,7 +196,7 @@ int main(){
         textcolor(15);//White
     }
     }
-    
+
     if (stage == 1) {
         counttime = 600;
     }
