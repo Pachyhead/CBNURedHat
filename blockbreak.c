@@ -154,7 +154,7 @@ int main(){
     int bar6_y = 23;
     int counttime;
     int count=1;
-    int block[7][40]; //블록 존재 여부 확인
+    int block[7][40] = {0,}; //블록 존재 여부 확인
     int bx = 0, by = 0; //블록 좌표 변수 선언
     int score = 0; //점수 변수 선언
     for( int by = 0; by < 7; by++){
