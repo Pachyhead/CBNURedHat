@@ -160,8 +160,8 @@ int main(){
     int flag = 0;
     FILE *fp;
     int highscore;
-    char num;
-
+    char num[100];
+    int scocount=0;
     fopen_s(&fp, "score.txt", "r");
     if (fp == NULL) {
         printf("파일 열기 실패");
@@ -170,9 +170,19 @@ int main(){
 
     // fscanf_s 함수를 호출할 때 "%c" 서식 지정자를 사용하고,
     // num 변수의 주소와 sizeof(num)을 인수로 전달합니다.
-    while (fscanf_s(fp, "%c", &num, sizeof(num)) != EOF);
-    highscore = num - '0';
+    while (fscanf_s(fp, "%c", &num[scocount++]) != EOF);
+    scocount = scocount - 1;
+    if (scocount - 1 == 0) {
+        highscore = num[0] - '0';
+    }
 
+    if (scocount - 1 == 1) {
+        highscore = (num[0] - '0')*10+num[1]-'0';
+    }
+
+    if (scocount - 1 == 2) {
+        highscore = (num[0] - '0') * 100 + (num[1] - '0')*10+num[2]-'0';
+    }
     gotoxy(50, 3);
     printf("최고점수:%d", highscore);
 
