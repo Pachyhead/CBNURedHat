@@ -361,8 +361,6 @@ int main(){
 
         gotoxy(50, 1);
         printf("%d초", counttime);
-
-
         
 
         x += dx;//공의 좌표 바꾸기
@@ -467,6 +465,7 @@ int main(){
             }
         }
         if (flag == 0) {
+            check =1;
             break;
         }
     }
@@ -478,8 +477,14 @@ int main(){
     fprintf(fp, "%d", highscore);
     fclose(fp);
     system("cls");
-    gotoxy(55, 10);
-    printf(" GAME OVER ");
+    if(check == 0){
+        gotoxy(55, 10);
+        printf(" GAME OVER ");
+    }
+    else if(check==1){
+        gotoxy(57, 10);
+        printf(" CLEAR ");
+    }
     gotoxy(50, 12);
     printf("최고점수:%d  현재점수:%d",highscore,score);
     gotoxy(50, 14);
