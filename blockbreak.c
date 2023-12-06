@@ -179,7 +179,13 @@ int main(){
 
     fclose(fp);
     if (stage == 1) {
-        for (bx = 25; bx < 30; bx++) {
+        for (bx = 5; bx < 8; bx++) {
+            by = 0;
+            block[by][bx] = 1;
+            gotoxy(bx + 1, by + 1);
+            printf("▣");
+        }
+        for (bx = 32; bx < 35; bx++) {
             by = 0;
             block[by][bx] = 1;
             gotoxy(bx + 1, by + 1);
