@@ -191,7 +191,32 @@ int main(){
             printf("▣");
         }
     }
-    else if (stage>1){
+    else if (stage==3){
+        for( int by = 0; by < 5; by++){
+        if (by == 0) {
+            textcolor(12);//red
+            }
+        if (by == 1) {
+            textcolor(6);//Dark yellow
+            }
+        if (by == 2) {
+            textcolor(10);//green
+            }
+        if (by == 3) {
+            textcolor(9);//blue
+            }
+        if (by == 4) {
+            textcolor(13);//purple
+            }
+        for (int bx = 1; bx < 39; bx++) {
+            block[by][bx] = 1;
+            gotoxy(bx + 1, by + 1);
+            printf("▣");
+            }
+        textcolor(15);//White
+        }
+    }
+    else if (stage==4){
         for( int by = 0; by < 7; by++){
         if (by == 0) {
             textcolor(12);//red
@@ -218,9 +243,9 @@ int main(){
             block[by][bx] = 1;
             gotoxy(bx + 1, by + 1);
             printf("▣");
-        }
+            }
         textcolor(15);//White
-    }
+        }
     }
 
     if (stage == 1) {
