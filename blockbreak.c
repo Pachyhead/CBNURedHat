@@ -135,7 +135,7 @@ void wall(){
 int main(){
     int stage=choose();
     wall();
-
+    int n;
     int x = 18;  // 공의 초기 x 좌표
     int y = 20;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
@@ -157,6 +157,27 @@ int main(){
     int block[7][40] = {0,}; //블록 존재 여부 확인
     int bx = 0, by = 0; //블록 좌표 변수 선언
     int score = 0; //점수 변수 선언
+    int score = 0; //점수 변수 선언
+
+    FILE *fp;
+    int highscore;
+    char num;
+
+    fopen_s(&fp, "score.txt", "r");
+    if (fp == NULL) {
+        printf("파일 열기 실패");
+        return 1;
+        }
+
+    // fscanf_s 함수를 호출할 때 "%c" 서식 지정자를 사용하고,
+    // num 변수의 주소와 sizeof(num)을 인수로 전달합니다.
+    while (fscanf_s(fp, "%c", &num, sizeof(num)) != EOF);
+    highscore = num - '0';
+
+    gotoxy(50, 3);
+    printf("최고점수:%d", highscore);
+
+    fclose(fp);
     if (stage == 1) {
         for (bx = 25; bx < 30; bx++) {
             by = 0;
