@@ -157,7 +157,6 @@ int main(){
     int block[7][40] = {0,}; //블록 존재 여부 확인
     int bx = 0, by = 0; //블록 좌표 변수 선언
     int score = 0; //점수 변수 선언
-    int score = 0; //점수 변수 선언
 
     FILE *fp;
     int highscore;
