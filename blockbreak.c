@@ -94,13 +94,13 @@ int choose(){
     textcolor(15);
 
 
-    int st_intro_x=45;
+    int st_intro_x=40;
     int st_intro_y=19;
     int st_choose_x=49;
     int st_choose_y=20;
     int stage;
     gotoxy(st_intro_x, st_intro_y);
-    printf("1:쉬움   2:보통   3:어려움");
+    printf("1:튜토리얼   2:쉬움   3:보통   4:어려움");
     gotoxy(st_choose_x, st_choose_y);
     printf("난이도를 선택하세요:");
     scanf_s("%d", &stage);
@@ -135,7 +135,7 @@ void wall(){
 int main(){
     int stage=choose();
     wall();
-
+    int n;
     int x = 18;  // 공의 초기 x 좌표
     int y = 20;  // 공의 초기 y 좌표
     int dx = 1; // 공을 오른쪽으로 이동시킴
@@ -154,10 +154,99 @@ int main(){
     int bar6_y = 23;
     int counttime;
     int count=1;
-    int block[7][40]; //블록 존재 여부 확인
+    int block[7][40] = {0,}; //블록 존재 여부 확인
     int bx = 0, by = 0; //블록 좌표 변수 선언
     int score = 0; //점수 변수 선언
-    for( int by = 0; by < 7; by++){
+    int flag = 0;
+    FILE *fp;
+    int highscore;
+    char num[100];
+    int scocount=0;
+    fopen_s(&fp, "score.txt", "r");
+    if (fp == NULL) {
+        printf("파일 열기 실패");
+        return 1;
+        }
+
+    // fscanf_s 함수를 호출할 때 "%c" 서식 지정자를 사용하고,
+    // num 변수의 주소와 sizeof(num)을 인수로 전달합니다.
+    while (fscanf_s(fp, "%c", &num[scocount++]) != EOF);
+    scocount = scocount - 1;
+    if (scocount - 1 == 0) {
+        highscore = num[0] - '0';
+    }
+
+    if (scocount - 1 == 1) {
+        highscore = (num[0] - '0')*10+num[1]-'0';
+    }
+
+    if (scocount - 1 == 2) {
+        highscore = (num[0] - '0') * 100 + (num[1] - '0')*10+num[2]-'0';
+    }
+    gotoxy(50, 3);
+    printf("최고점수:%d", highscore);
+
+    fclose(fp);
+    if (stage == 1) {
+        for (bx = 5; bx < 8; bx++) {
+            by = 0;
+            block[by][bx] = 1;
+            gotoxy(bx + 1, by + 1);
+            printf("▣");
+        }
+        for (bx = 32; bx < 35; bx++) {
+            by = 0;
+            block[by][bx] = 1;
+            gotoxy(bx + 1, by + 1);
+            printf("▣");
+        }
+    }
+    else if (stage==2){
+        for( int by = 0; by < 3; by++){
+        if (by == 0) {
+            textcolor(12);//red
+            }
+        if (by == 1) {
+            textcolor(6);//Dark yellow
+            }
+        if (by == 2) {
+            textcolor(10);//green
+            }
+        for (int bx = 1; bx < 39; bx++) {
+            block[by][bx] = 1;
+            gotoxy(bx + 1, by + 1);
+            printf("▣");
+            }
+        textcolor(15);//White
+        }
+    }
+    else if (stage==3){
+        for( int by = 0; by < 5; by++){
+        if (by == 0) {
+            textcolor(12);//red
+            }
+        if (by == 1) {
+            textcolor(6);//Dark yellow
+            }
+        if (by == 2) {
+            textcolor(10);//green
+            }
+        if (by == 3) {
+            textcolor(9);//blue
+            }
+        if (by == 4) {
+            textcolor(13);//purple
+            }
+        for (int bx = 1; bx < 39; bx++) {
+            block[by][bx] = 1;
+            gotoxy(bx + 1, by + 1);
+            printf("▣");
+            }
+        textcolor(15);//White
+        }
+    }
+    else if (stage==4){
+        for( int by = 0; by < 7; by++){
         if (by == 0) {
             textcolor(12);//red
             }
@@ -183,17 +272,22 @@ int main(){
             block[by][bx] = 1;
             gotoxy(bx + 1, by + 1);
             printf("▣");
-        }
+            }
         textcolor(15);//White
+        }
     }
+
     if (stage == 1) {
+        counttime = 600;
+    }
+    if (stage == 2) {
         counttime = 300;
     }
-    else if (stage == 2) {
+    else if (stage == 3) {
         counttime = 180;
     }
 
-    else if (stage == 3) {
+    else if (stage == 4) {
         counttime = 60;
     }
     while(1){
@@ -363,7 +457,33 @@ int main(){
             dy = -1;
             }
         count++;
+        flag = 0;
+        for (by = 0; by < 7; by++) {
+            for (bx = 1; bx < 39; bx++) {
+                if (block[by][bx]==1) {
+                    flag = 1;
+                }
+            }
+        }
+        if (flag == 0) {
+            break;
+        }
     }
     system("cls");
-    printf("게임종료");
+     if (score > highscore) {
+            highscore = score;
+    }
+    fopen_s(&fp, "score.txt", "w");
+    fprintf(fp, "%d", highscore);
+    fclose(fp);
+    system("cls");
+    gotoxy(55, 10);
+    printf(" GAME OVER ");
+    gotoxy(50, 12);
+    printf("최고점수:%d  현재점수:%d",highscore,score);
+    gotoxy(50, 14);
+    printf("메인메뉴:1 게임종료:2");
+    gotoxy(55, 20);
+    printf("선택하세요: ");
+    scanf_s("%d", &n);
 }
