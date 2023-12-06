@@ -449,6 +449,16 @@ int main(){
             }
         count++;
         flag = 0;
+        for (by = 0; by < 7; by++) {
+            for (bx = 1; bx < 39; bx++) {
+                if (block[by][bx]==1) {
+                    flag = 1;
+                }
+            }
+        }
+        if (flag == 0) {
+            break;
+        }
     }
     system("cls");
      if (score > highscore) {
