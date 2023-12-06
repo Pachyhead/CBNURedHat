@@ -407,5 +407,20 @@ int main(){
         count++;
     }
     system("cls");
-    printf("게임종료");
+     if (score > highscore) {
+            highscore = score;
+    }
+    fopen_s(&fp, "score.txt", "w");
+    fprintf(fp, "%d", highscore);
+    fclose(fp);
+    system("cls");
+    gotoxy(55, 10);
+    printf(" GAME OVER ");
+    gotoxy(50, 12);
+    printf("최고점수:%d  현재점수:%d",highscore,score);
+    gotoxy(50, 14);
+    printf("메인메뉴:1 게임종료:2");
+    gotoxy(55, 20);
+    printf("선택하세요: ");
+    scanf_s("%d", &n);
 }
