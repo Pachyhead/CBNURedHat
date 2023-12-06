@@ -361,7 +361,8 @@ int main(){
 
         gotoxy(50, 1);
         printf("%d초", counttime);
-        
+        gotoxy(50, 2);
+        printf("점수: %d", score);
 
         x += dx;//공의 좌표 바꾸기
         y += dy;
