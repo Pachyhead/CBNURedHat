@@ -191,6 +191,25 @@ int main(){
             printf("▣");
         }
     }
+    else if (stage==2){
+        for( int by = 0; by < 3; by++){
+        if (by == 0) {
+            textcolor(12);//red
+            }
+        if (by == 1) {
+            textcolor(6);//Dark yellow
+            }
+        if (by == 2) {
+            textcolor(10);//green
+            }
+        for (int bx = 1; bx < 39; bx++) {
+            block[by][bx] = 1;
+            gotoxy(bx + 1, by + 1);
+            printf("▣");
+            }
+        textcolor(15);//White
+        }
+    }
     else if (stage==3){
         for( int by = 0; by < 5; by++){
         if (by == 0) {
