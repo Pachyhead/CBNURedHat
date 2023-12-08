@@ -11,8 +11,7 @@
 #define RIGHT 77
 #define UP 72
 
-#define MAPWIDTH 20
-#define MAPHEIGHT 20
+#define MAPSIZE 22 // 신규
 #define SNAKELENGTH 17
 
 typedef struct _coord {
@@ -68,30 +67,32 @@ bool plusChecker;
 int blockCount = 0;
 static int snakeScore = 0;
 int bestSnakeScore;
-Component blockArray[20] = { {0, 0} };
-  
-int map[20][20] =
+Component blockArray[30] = { {0, 0} };
+
+int map[MAPSIZE][MAPSIZE] =
 {
-    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
 linkedList* createList(); // 연결 리스트 생성 함수
@@ -111,12 +112,13 @@ int choiceGame(int mode);
 void Delete();
 void Output();
 void Move();
-void BlockOutput();
+void BlockOutput(int diff, int diff2);
 void putInSanctuary(Component block); // 장애물이 생성될 수 없는 공간, 장애물을 포함한 3*3을 생성한다.
 bool isInSanctuary(Component block); // 장애물이 sanctuary에 있는지 check. 있으면 true, 없으면 false
 bool isInSnake(Component block); // 장애물이 snake의 좌표에 존재하는지 check. 있으면 true, 없으면 false
 void printSanctuary(Component block, bool toggle); // sanctuary를 화면에 출력해보는 함수
 bool isInBlockArray(Component block); // block이 blockArray 내에 존재하는지 check.
+bool isAtFood(Component block, Component food);
 
 void FoodOutput();
 void Eat();
@@ -284,9 +286,9 @@ void insertLast(linkedList* list, coord value) {
 
 void Map()
 {
-    for (int i = 0; i < MAPHEIGHT; i++)
+    for (int i = 0; i < MAPSIZE; i++)
     {
-        for (int j = 0; j < MAPWIDTH; j++)
+        for (int j = 0; j < MAPSIZE; j++)
         {
             if (map[i][j] == 1)
                 printf("▣");
@@ -386,7 +388,7 @@ void Output()
     }
 }
 
-void Move(int diff)
+void Move(int diff, int diff2)
 {
     int Time = 150;
     while (1)
@@ -396,7 +398,7 @@ void Move(int diff)
         MoveCoor();
         Output();
         Eat();
-        BlockOutput(diff);
+        BlockOutput(diff, diff2);
         GameOver();
         if (_kbhit())
             break;
@@ -412,8 +414,8 @@ int CanEatFood() {
     int count;
     count = 0;
 
-    if (food.x == 1 || food.x == 18) count++;
-    if (food.y == 1 || food.y == 18) count++;
+    if (food.x == 1 || food.x == (MAPSIZE - 2) * 2) count++;
+    if (food.y == 1 || food.y == (MAPSIZE - 2)) count++;
 
     for (int i = 0; i < strlen(blockArray); i++) {
         if (blockArray[i].x == food.x && blockArray[i].y + 1 == food.y) { count++; }
@@ -433,16 +435,16 @@ void FoodOutput() {
     int playing;
     srand(time(NULL));
 
-    food.x = (rand() % 18 + 1) * 2;
-    food.y = rand() % 18 + 1;
+    food.x = (rand() % (MAPSIZE - 2) + 1) * 2;
+    food.y = rand() % (MAPSIZE - 2) + 1;
     playing = CanEatFood();
 
     if (playing) {
         for (int i = 0; i < length; i++) {
             coord forTemp = getCoord(snakeList, i);
             if (forTemp.x == food.x && forTemp.y == food.y) {
-                food.x = (rand() % 18 + 1) * 2;
-                food.y = rand() % 18 + 1;
+                food.x = (rand() % (MAPSIZE - 2) + 1) * 2;
+                food.y = rand() % (MAPSIZE - 2) + 1;
             }
         }
 
@@ -450,7 +452,8 @@ void FoodOutput() {
         textColor(14);
         printf("★");
         textColor(15);
-    } else {
+    }
+    else {
         FoodOutput();
     }
 }
@@ -466,7 +469,7 @@ void Eat()
     }
 }
 
-void BlockOutput(int diff)
+void BlockOutput(int diff, int diff2)
 {
     if (diff == 0) return 0;
     int ranCase;
@@ -477,11 +480,11 @@ void BlockOutput(int diff)
     printf("ranCase : %d ", ranCase);
     printf("blockCount : %d", blockCount);
 
-    if (ranCase == 0 && blockCount < 20) {
+    if (ranCase == 0 && blockCount < diff2) {
         do {
             block.x = (rand() % 18 + 1) * 2;
             block.y = rand() % 18 + 1;
-        } while (isInSnake(block) || isInSanctuary(block));
+        } while (isInSnake(block) || isInSanctuary(block) || isAtFood(block, food));
 
         putInSanctuary(block);
         printSanctuary(block, false); // sanctuary를 화면에 표시할지 true, false를 통해 선택
@@ -562,6 +565,11 @@ bool isInBlockArray(Component block) {
     return false;
 }
 
+bool isAtFood(Component block, Component food) { // new
+    if (block.x == food.x && block.y == food.y) return true;
+    else return false;
+}
+
 void Score()
 {
     snakeScore += 1;
@@ -576,14 +584,14 @@ void GameOver()
     coord temp = getCoord(snakeList, 0);
     int length = snakeList->snakeLength;
 
-    if (temp.x >= 38 || temp.x <= 0)
+    if (temp.x >= (MAPSIZE - 1)*2 || temp.x <= 0)
     {
         system("cls");
         printf("게임 오버");
         AfterGO();
     }
 
-    if (temp.y >= 19 || temp.y <= 0)
+    if (temp.y >= (MAPSIZE - 1) || temp.y <= 0)
     {
         system("cls");
         printf("게임 오버");
@@ -611,7 +619,7 @@ void GameOver()
     }
 }
 
-void AfterGO(){
+void AfterGO() {
     FILE* scoreFile;
     if (snakeScore > bestSnakeScore) {
         fopen_s(&scoreFile, "data.txt", "w");
@@ -691,7 +699,7 @@ int choiceGame(int mode) {
 int main()
 {
     int key, mode = 0;
-    int select;
+    int select, select2 = 30;
     FILE* scoreFile;
     fopen_s(&scoreFile, "data.txt", "r");
     fscanf_s(scoreFile, "%d", &bestSnakeScore);
@@ -699,7 +707,7 @@ int main()
 
     mode = choiceGame(mode);
     if (mode == 1) select = 0;
-    else  select = 7; 
+    else  select = 7;
 
     Map();
     CursorView(0);
@@ -731,7 +739,7 @@ int main()
                     l.Right = false;
                     l.Left = false;
                 }
-                Move(select);
+                Move(select, select2);
                 break;
             case DOWN:
                 if (l.Up == true)
@@ -743,7 +751,7 @@ int main()
                     l.Right = false;
                     l.Left = false;
                 }
-                Move(select);
+                Move(select, select2);
                 break;
             case LEFT:
                 if (l.Right == true)
@@ -755,7 +763,7 @@ int main()
                     l.Right = false;
                     l.Up = false;
                 }
-                Move(select);
+                Move(select, select2);
                 break;
             case RIGHT:
                 if (l.Left == true)
@@ -767,7 +775,7 @@ int main()
                     l.Up = false;
                     l.Left = false;
                 }
-                Move(select);
+                Move(select, select2);
                 break;
             case 1:
                 Sleep(10000);
