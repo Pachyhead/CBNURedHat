@@ -454,7 +454,7 @@ int BBmain() {
     int highscore;
     char num[100];
     int scocount = 0;
-    fopen_s(&fp, "score.txt", "r");
+    fopen_s(&fp, "BBScore.txt", "r");
     if (fp == NULL) {
         printf("파일 열기 실패");
         return 1;
@@ -765,7 +765,7 @@ int BBmain() {
     if (score > highscore) {
         highscore = score;
     }
-    fopen_s(&fp, "score.txt", "w");
+    fopen_s(&fp, "BBScore.txt", "w");
     fprintf(fp, "%d", highscore);
     fclose(fp);
     system("cls");
@@ -1279,7 +1279,7 @@ void GameOver()
 void AfterGO() {
     FILE* scoreFile;
     if (snakeScore > bestSnakeScore) {
-        fopen_s(&scoreFile, "data.txt", "w");
+        fopen_s(&scoreFile, "SnakeScore.txt", "w");
         fprintf_s(scoreFile, "%d", snakeScore);
         fclose(scoreFile);
     }
@@ -1358,7 +1358,7 @@ int snakemain()
     int key, mode = 0;
     int select, select2 = 30;
     FILE* scoreFile;
-    fopen_s(&scoreFile, "data.txt", "r");
+    fopen_s(&scoreFile, "SnakeScore.txt", "r");
     fscanf_s(scoreFile, "%d", &bestSnakeScore);
     fclose(scoreFile);
 
