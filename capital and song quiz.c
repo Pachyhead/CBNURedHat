@@ -2,8 +2,46 @@
 #include<string.h>
 #include<stdlib.h>
 #include<time.h>
+#include<windows.h>
 #define MAX_COUNT 20
-int main(viod) {
+
+void textcolor(int colorNum) {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorNum);
+}
+
+void gotoxy(int x, int y) {//원하는 x,y좌표로 이동시키는 함수
+	COORD pos = { x, y };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+void wall() {
+	textcolor(9);//파란색
+	gotoxy(15, 4);
+	for (int i = 0; i < 91; i++) {
+		printf("■");
+	}
+	textcolor(15);
+	int k = 5;
+	for (int i = 0; i < 20; i++) {
+		gotoxy(15, k++);
+		printf("|");
+		for (int i = 0; i < 89; i++) {
+			printf(" ");
+		}
+		printf("|\n");
+
+
+	}
+	gotoxy(15, 24);
+	textcolor(10);//초록색
+	for (int i = 0; i < 91; i++) {
+		printf("■");
+	}
+	textcolor(15);
+
+}
+int main(void) {
+	wall();
 	int data[MAX_COUNT];
     int i, sub_i;
     srand((unsigned int)time(NULL));
