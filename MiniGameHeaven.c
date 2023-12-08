@@ -134,9 +134,6 @@ void GameOver();
 void AfterGame();
 void GameExplain(int score);
 
-void gotoxy(int x, int y);
-void CursorView(char show);//커서숨기기
-
 void mainInterface();
 void gotoxy(int x, int y);
 void CursorView(char show); //커서숨기기
@@ -399,6 +396,7 @@ int choose() {
     printf("1:튜토리얼   2:쉬움   3:보통   4:어려움");
     gotoxy(st_choose_x, st_choose_y);
     printf("난이도를 선택하세요:");
+    gotoxy(st_choose_x + 11, st_choose_y);
     scanf_s("%d", &stage);
     system("cls");
     return stage;
@@ -614,6 +612,7 @@ int BBmain() {
     else if (stage == 4) {
         counttime = 60;
     }
+    CursorView(0);
     while (1) {
         gotoxy(bar1_x, bar1_y);
         printf(" ");
@@ -820,8 +819,6 @@ int BBmain() {
 
     if (n == 1) return 0;
     else if (n == 2) exit(0);
-
-
 }
 
 int CNSQuizmain(void) {
@@ -1440,13 +1437,13 @@ void AfterGame() {
     printf("선택하세요: ");
     scanf_s("%d", &n);
     if (n == 1) {
-    system("cls");
-    snakeScore = 0;
-    main();
+        system("cls");
+        snakeScore = 0;
+        main();
     }
     else if (n == 2) {
-    exit(0);
-}
+        exit(0);
+    }
 }
 
 void GameExplain(int score)
