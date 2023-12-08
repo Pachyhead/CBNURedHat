@@ -1440,6 +1440,7 @@ void AfterGame() {
     printf("선택하세요: ");
     scanf_s("%d", &n);
     if (n == 1) {
+    system("cls");
     main();
     }
     else if (n == 2) {
