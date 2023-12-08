@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include<stdbool.h>
 #include<time.h>
+#include<string.h>
 
 #define DOWN 80
 #define LEFT 75
@@ -43,10 +44,7 @@ typedef struct _component
 }Component;
 
 Component food;
-
 Component block;
-
-int mode = 0;
 
 typedef struct _sanctuary {
     int xArray[3];
@@ -67,6 +65,10 @@ Logic l;
 linkedList* snakeList;
 
 bool plusChecker;
+int blockCount = 0;
+static int snakeScore = 0;
+int bestSnakeScore;
+Component blockArray[20] = { {0, 0} };
 
 int map[20][20] =
 {
@@ -460,9 +462,6 @@ void Eat()
     }
 }
 
-int blockCount = 0;
-Component blockArray[20] = { {0, 0} };
-
 void BlockOutput(int diff)
 {
     int ranCase;
@@ -636,7 +635,7 @@ void Clear()
     exit(0);
 }
 
-int choiceGame() {
+int choiceGame(mode) {
     int playing = 1;
     while (playing) {
         gotoxy(25, 10);
@@ -668,31 +667,15 @@ int choiceGame() {
         }
         if (mode != 0) playing = 0;
     }
+    system("cls");
     return mode;
-}
-
-void consorClear() {
-    for (int i = 10; i < 15; i++) {
-        gotoxy(25, i);
-        printf("                                                                    ");
-    }
-    for (int i = 17; i < 20; i++) {
-        gotoxy(90, i);
-        printf("             ");
-    }
-    gotoxy(50, 25);
-    printf("                  ");
-    gotoxy(44, 26);
-    printf("                               ");
-    gotoxy(0, 0);
 }
 
 int main()
 {
-    int key;
+    int key, mode = 0;
     int select;
     choiceGame();
-    consorClear();
     printf("select: ");
     scanf_s("%d", &select);
     system("cls");
