@@ -68,8 +68,8 @@ bool plusChecker;
 int blockCount = 0;
 static int snakeScore = 0;
 int bestSnakeScore;
-Component blockArray[20] = { {0, 0} };
-  
+Component blockArray[30] = { {0, 0} };
+
 int map[20][20] =
 {
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -111,7 +111,7 @@ int choiceGame(int mode);
 void Delete();
 void Output();
 void Move();
-void BlockOutput();
+void BlockOutput(int diff, int diff2);
 void putInSanctuary(Component block); // 장애물이 생성될 수 없는 공간, 장애물을 포함한 3*3을 생성한다.
 bool isInSanctuary(Component block); // 장애물이 sanctuary에 있는지 check. 있으면 true, 없으면 false
 bool isInSnake(Component block); // 장애물이 snake의 좌표에 존재하는지 check. 있으면 true, 없으면 false
@@ -386,7 +386,7 @@ void Output()
     }
 }
 
-void Move(int diff)
+void Move(int diff, int diff2)
 {
     int Time = 150;
     while (1)
@@ -396,7 +396,7 @@ void Move(int diff)
         MoveCoor();
         Output();
         Eat();
-        BlockOutput(diff);
+        BlockOutput(diff, diff2);
         GameOver();
         if (_kbhit())
             break;
@@ -450,7 +450,8 @@ void FoodOutput() {
         textColor(14);
         printf("★");
         textColor(15);
-    } else {
+    }
+    else {
         FoodOutput();
     }
 }
@@ -466,7 +467,7 @@ void Eat()
     }
 }
 
-void BlockOutput(int diff)
+void BlockOutput(int diff, int diff2)
 {
     if (diff == 0) return 0;
     int ranCase;
@@ -477,7 +478,7 @@ void BlockOutput(int diff)
     printf("ranCase : %d ", ranCase);
     printf("blockCount : %d", blockCount);
 
-    if (ranCase == 0 && blockCount < 20) {
+    if (ranCase == 0 && blockCount < diff2) {
         do {
             block.x = (rand() % 18 + 1) * 2;
             block.y = rand() % 18 + 1;
@@ -611,7 +612,7 @@ void GameOver()
     }
 }
 
-void AfterGO(){
+void AfterGO() {
     FILE* scoreFile;
     if (snakeScore > bestSnakeScore) {
         fopen_s(&scoreFile, "data.txt", "w");
@@ -691,7 +692,7 @@ int choiceGame(int mode) {
 int main()
 {
     int key, mode = 0;
-    int select;
+    int select, select2 = 20;
     FILE* scoreFile;
     fopen_s(&scoreFile, "data.txt", "r");
     fscanf_s(scoreFile, "%d", &bestSnakeScore);
@@ -699,7 +700,7 @@ int main()
 
     mode = choiceGame(mode);
     if (mode == 1) select = 0;
-    else  select = 7; 
+    else  select = 7;
 
     Map();
     CursorView(0);
@@ -731,7 +732,7 @@ int main()
                     l.Right = false;
                     l.Left = false;
                 }
-                Move(select);
+                Move(select, select2);
                 break;
             case DOWN:
                 if (l.Up == true)
@@ -743,7 +744,7 @@ int main()
                     l.Right = false;
                     l.Left = false;
                 }
-                Move(select);
+                Move(select, select2);
                 break;
             case LEFT:
                 if (l.Right == true)
@@ -755,7 +756,7 @@ int main()
                     l.Right = false;
                     l.Up = false;
                 }
-                Move(select);
+                Move(select, select2);
                 break;
             case RIGHT:
                 if (l.Left == true)
@@ -767,7 +768,7 @@ int main()
                     l.Up = false;
                     l.Left = false;
                 }
-                Move(select);
+                Move(select, select2);
                 break;
             case 1:
                 Sleep(10000);
