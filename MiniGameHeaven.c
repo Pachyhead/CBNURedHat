@@ -395,8 +395,7 @@ int choose() {
     gotoxy(st_intro_x, st_intro_y);
     printf("1:튜토리얼   2:쉬움   3:보통   4:어려움");
     gotoxy(st_choose_x, st_choose_y);
-    printf("난이도를 선택하세요:");
-    gotoxy(st_choose_x + 11, st_choose_y);
+    printf("난이도를 선택하세요: ");
     scanf_s("%d", &stage);
     system("cls");
     return stage;
