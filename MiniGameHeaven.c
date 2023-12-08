@@ -1330,26 +1330,30 @@ void GameExplain(int score)
 
 int choiceGame(int mode) {
     int playing = 1;
+    int xCoor = 35;
     while (playing) {
-        gotoxy(25, 10);
-        printf("■■■■■   ■      ■       ■       ■    ■  ■■■■■");
-        gotoxy(25, 11);
-        printf("■           ■■    ■     ■  ■     ■  ■    ■");
-        gotoxy(25, 12);
-        printf("■■■■■   ■  ■  ■   ■■■■■   ■■      ■■■■■");
-        gotoxy(25, 13);
-        printf("        ■   ■    ■■   ■      ■   ■  ■    ■");
-        gotoxy(25, 14);
-        printf("■■■■■   ■      ■   ■      ■   ■    ■  ■■■■■   Game");
-        gotoxy(90, 17);
+        textColor(14);
+        gotoxy(xCoor, 10);
+        printf("■■■■■■   ■     ■      ■      ■    ■  ■■■■■");
+        gotoxy(xCoor, 11);
+        printf("■        ■ ■   ■     ■ ■     ■  ■    ■");
+        gotoxy(xCoor, 12);
+        printf("■■■■■■   ■  ■  ■    ■■■■■    ■■      ■■■■■");
+        gotoxy(xCoor, 13);
+        printf("     ■   ■   ■ ■   ■     ■   ■  ■    ■");
+        gotoxy(xCoor, 14);
+        printf("■■■■■■   ■     ■   ■     ■   ■    ■  ■■■■■   Game");
+        textColor(15);
+        gotoxy(xCoor + 15, 20);
         printf("1. easy mode");
-        gotoxy(90, 18);
+        gotoxy(xCoor + 15, 21);
         printf("2. nomal mode");
-        gotoxy(90, 19);
+        gotoxy(xCoor + 15, 22);
         printf("3. hard mode");
-        gotoxy(50, 25);
-        printf("choice mode num: ");
-        gotoxy(67, 25);
+
+        gotoxy(xCoor + 15, 25);
+        printf("choice mode: ");
+        gotoxy(xCoor + 28, 25);
         scanf_s("%d", &mode);
         if (mode < 0 || mode  > 3) {
             gotoxy(67, 25);
