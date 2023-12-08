@@ -28,7 +28,8 @@ int main(viod) {
 		cnt++;
 		n = rand() % 20;
 		printf("%s\n", quiz[n]);
-		scanf_s("%s ", input, (unsigned)_countof(input));
+        fgets(input, sizeof(input), stdin);
+		input[strcspn(input, "\n")] = '\0';
 		if (strcmp(ans[n], input) == 0) {
 			printf("맞았습니다.\n");
 		}
