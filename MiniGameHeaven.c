@@ -1441,6 +1441,7 @@ void AfterGame() {
     scanf_s("%d", &n);
     if (n == 1) {
     system("cls");
+    snakeScore = 0;
     main();
     }
     else if (n == 2) {
