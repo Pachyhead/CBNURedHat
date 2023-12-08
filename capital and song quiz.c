@@ -42,6 +42,7 @@ void wall() {
 }
 int main(void) {
 	wall();
+	int score=0;
 	int data[MAX_COUNT];
     int i, sub_i;
     srand((unsigned int)time(NULL));
@@ -74,7 +75,7 @@ int main(void) {
 	int n, cnt=0;
 	char ch;
 	int reset = 0;
-	i = 0;
+	
 	i = 0;
     gotoxy(80, 5);
     printf("점수:%d", score);
