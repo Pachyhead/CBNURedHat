@@ -396,7 +396,6 @@ void Move(int diff)
         MoveCoor();
         Output();
         Eat();
-
         BlockOutput(diff);
         GameOver();
         if (_kbhit())
@@ -431,12 +430,14 @@ int CanEatFood() {
 
 void FoodOutput() {
     int length = snakeList->snakeLength;
-
+    int playing;
     srand(time(NULL));
 
     food.x = (rand() % 18 + 1) * 2;
     food.y = rand() % 18 + 1;
+    playing = CanEatFood();
 
+    if(playing){
     for (int i = 0; i < length; i++) {
         coord forTemp = getCoord(snakeList, i);
         if (forTemp.x == food.x && forTemp.y == food.y) {
@@ -449,6 +450,9 @@ void FoodOutput() {
     textColor(14);
     printf("★");
     textColor(15);
+    } else {
+        FoodOutput();
+    }
 }
 
 void Eat()
@@ -464,6 +468,7 @@ void Eat()
 
 void BlockOutput(int diff)
 {
+    if(diff == 0) return 0;
     int ranCase;
     Component block = { 0,0 }; // 장애물 정의
 
@@ -559,11 +564,10 @@ bool isInBlockArray(Component block) {
 
 void Score()
 {
-    static int score = 0;
-    score += 1;
+    snakeScore += 1;
     gotoxy(0, 20);
-    printf("점수 : %d", score);
-    if (score == 20)
+    printf("점수 : %d", snakeScore);
+    if (snakeScore == 20)
         Clear();
 }
 
@@ -609,6 +613,9 @@ void GameOver()
 
 void GameExplain()
 {
+    gotoxy(50, 6);
+    printf("bestScore: %d", snakeScore);
+
     gotoxy(50, 8);
     puts("▶ 방향키: 이동");
 
@@ -675,10 +682,10 @@ int main()
 {
     int key, mode = 0;
     int select;
-    choiceGame();
-    printf("select: ");
-    scanf_s("%d", &select);
-    system("cls");
+
+    mode = choiceGame(mode);
+    if (mode == 1) select = 0;
+    else  select = 7;
 
     Map();
     CursorView(0);
