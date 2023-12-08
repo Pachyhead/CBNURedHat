@@ -174,7 +174,7 @@ int main() {
 }
 
 void mainInterface(int mainInterfaceCoor) {
-    //textColor(4);
+    textColor(4);
     gotoxy(mainInterfaceCoor, 5);
     printf("          ■■");
     gotoxy(mainInterfaceCoor, 6);
@@ -194,7 +194,7 @@ void mainInterface(int mainInterfaceCoor) {
     gotoxy(mainInterfaceCoor, 13);
     printf("          ■■");
 
-    //textColor(6);
+    textColor(6);
     gotoxy(mainInterfaceCoor + 15, 5);
     printf("         ■■");
     gotoxy(mainInterfaceCoor + 15, 6);
@@ -214,7 +214,7 @@ void mainInterface(int mainInterfaceCoor) {
     gotoxy(mainInterfaceCoor + 15, 13);
     printf("         ■■");
 
-    //textColor(10);
+    textColor(10);
     gotoxy(mainInterfaceCoor + 29, 5);
     printf("         ■ ■");
     gotoxy(mainInterfaceCoor + 29, 6);
@@ -234,7 +234,7 @@ void mainInterface(int mainInterfaceCoor) {
     gotoxy(mainInterfaceCoor + 29, 13);
     printf("         ■ ■");
 
-    //textColor(9);
+    textColor(9);
     gotoxy(mainInterfaceCoor + 44, 5);
     printf("         ■■");
     gotoxy(mainInterfaceCoor + 44, 6);
@@ -254,7 +254,7 @@ void mainInterface(int mainInterfaceCoor) {
     gotoxy(mainInterfaceCoor + 44, 13);
     printf("     ■■■■■ ");
 
-    //textColor(13);
+    textColor(13);
     gotoxy(mainInterfaceCoor + 58, 5);
     printf(" ■■■■    ■■");
     gotoxy(mainInterfaceCoor + 58, 6);
@@ -274,7 +274,7 @@ void mainInterface(int mainInterfaceCoor) {
     gotoxy(mainInterfaceCoor + 58, 13);
     printf("   ■■■■■■■■");
 
-    //textColor(14);
+    textColor(14);
     gotoxy(mainInterfaceCoor + 72, 5);
     printf(" ■■■■■■■■");
     gotoxy(mainInterfaceCoor + 72, 6);
@@ -628,8 +628,7 @@ int BBmain() {
         gotoxy(bar6_x, bar6_y);
         printf(" ");
 
-     
-        if (GetAsyncKeyState(VK_LEFT) & 0x8000 && bar1_x!=1) { // 막대 왼쪽으로 이동
+        if (GetAsyncKeyState(VK_LEFT) & 0x8000) { // 막대 왼쪽으로 이동
             bar1_x--;
             bar2_x--;
             bar3_x--;
@@ -637,7 +636,7 @@ int BBmain() {
             bar5_x--;
             bar6_x--;
         }
-        if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && bar6_x!=39) { // 막대 오른쪽으로 이동
+        if (GetAsyncKeyState(VK_RIGHT) & 0x8000) { // 막대 오른쪽으로 이동
             bar1_x++;
             bar2_x++;
             bar3_x++;
@@ -908,7 +907,6 @@ int CNSQuizmain(void) {
             gotoxy(55, 18);
 
             ch = getchar();
-
             if (ch == '\n') {
                 reset = 0;
             }
