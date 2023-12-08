@@ -106,7 +106,7 @@ void insertLast(linkedList* list, coord value); // 맨 뒤에 노드를 추가�
 void Map();
 void Init();
 void MoveCoor();
-int choiceGame();
+int choiceGame(int mode);
 void consorClear();
 
 void Delete();
@@ -580,14 +580,14 @@ void GameOver()
     {
         system("cls");
         printf("게임 오버");
-        exit(0);
+        AfterGO();
     }
 
     if (temp.y >= 19 || temp.y <= 0)
     {
         system("cls");
         printf("게임 오버");
-        exit(0);
+        AfterGO();
     }
 
     for (int i = 0; i < 20; i++)
@@ -596,7 +596,7 @@ void GameOver()
         {
             system("cls");
             printf("게임 오버");
-            exit(0);
+            AfterGO();
         }
     }
 
@@ -606,9 +606,19 @@ void GameOver()
         if (temp.x == forTemp.x && temp.y == forTemp.y) {
             system("cls");
             printf("게임 오버");
-            exit(0);
+            AfterGO();
         }
     }
+}
+
+void AfterGO(){
+    FILE* scoreFile;
+    if (snakeScore > bestSnakeScore) {
+        fopen_s(&scoreFile, "data.txt", "w");
+        fprintf_s(scoreFile, "%d", snakeScore);
+        fclose(scoreFile);
+    }
+    exit(0);
 }
 
 void GameExplain()
@@ -642,7 +652,7 @@ void Clear()
     exit(0);
 }
 
-int choiceGame(mode) {
+int choiceGame(int mode) {
     int playing = 1;
     while (playing) {
         gotoxy(25, 10);
@@ -682,6 +692,10 @@ int main()
 {
     int key, mode = 0;
     int select;
+    FILE* scoreFile;
+    fopen_s(&scoreFile, "data.txt", "r");
+    fscanf_s(scoreFile, "%d", &bestSnakeScore);
+    fclose(scoreFile);
 
     mode = choiceGame(mode);
     if (mode == 1) select = 0;
