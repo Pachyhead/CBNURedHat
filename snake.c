@@ -413,8 +413,8 @@ int CanEatFood() {
     int count;
     count = 0;
 
-    if (food.x == 1 || food.x == 18) count++;
-    if (food.y == 1 || food.y == 18) count++;
+    if (food.x == 1 || food.x == (MAPSIZE - 2) * 2) count++;
+    if (food.y == 1 || food.y == (MAPSIZE - 2)) count++;
 
     for (int i = 0; i < strlen(blockArray); i++) {
         if (blockArray[i].x == food.x && blockArray[i].y + 1 == food.y) { count++; }
