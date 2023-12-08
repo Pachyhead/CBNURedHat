@@ -118,18 +118,16 @@ bool isInSanctuary(Component block); // 장애물이 sanctuary에 있는지 chec
 bool isInSnake(Component block); // 장애물이 snake의 좌표에 존재하는지 check. 있으면 true, 없으면 false
 void printSanctuary(Component block, bool toggle); // sanctuary를 화면에 출력해보는 함수
 bool isInBlockArray(Component block); // block이 blockArray 내에 존재하는지 check.
-bool isAtFood(Component block, Component food);
 
 void FoodOutput();
 void Eat();
 int CanEatFood();
 void BodyPlus();
 void Score();
-void Clear();
 void textColor(int colorNum);
 
 void GameOver();
-void AfterGO();
+void AfterGame();
 void GameExplain(int score);
 
 void gotoxy(int x, int y);
@@ -414,8 +412,8 @@ int CanEatFood() {
     int count;
     count = 0;
 
-    if (food.x == 1 || food.x == (MAPSIZE - 2) * 2) count++;
-    if (food.y == 1 || food.y == (MAPSIZE - 2)) count++;
+    if (food.x == 1 || food.x == (MAPSIZE - 2) *2) count++;
+    if (food.y == 1 || food.y == MAPSIZE - 2) count++;
 
     for (int i = 0; i < strlen(blockArray); i++) {
         if (blockArray[i].x == food.x && blockArray[i].y + 1 == food.y) { count++; }
@@ -435,7 +433,7 @@ void FoodOutput() {
     int playing;
     srand(time(NULL));
 
-    food.x = (rand() % (MAPSIZE - 2) + 1) * 2;
+    food.x = (rand() % (MAPSIZE - 2) + 1) * 2; 
     food.y = rand() % (MAPSIZE - 2) + 1;
     playing = CanEatFood();
 
@@ -484,7 +482,7 @@ void BlockOutput(int diff, int diff2)
         do {
             block.x = (rand() % 18 + 1) * 2;
             block.y = rand() % 18 + 1;
-        } while (isInSnake(block) || isInSanctuary(block) || isAtFood(block, food));
+        } while (isInSnake(block) || isInSanctuary(block));
 
         putInSanctuary(block);
         printSanctuary(block, false); // sanctuary를 화면에 표시할지 true, false를 통해 선택
@@ -565,18 +563,11 @@ bool isInBlockArray(Component block) {
     return false;
 }
 
-bool isAtFood(Component block, Component food) { // new
-    if (block.x == food.x && block.y == food.y) return true;
-    else return false;
-}
-
 void Score()
 {
     snakeScore += 1;
-    gotoxy(0, 20);
-    printf("점수 : %d", snakeScore);
     if (snakeScore == 20)
-        Clear();
+        AfterGame();
 }
 
 void GameOver()
@@ -588,14 +579,14 @@ void GameOver()
     {
         system("cls");
         printf("게임 오버");
-        AfterGO();
+        AfterGame();
     }
 
     if (temp.y >= (MAPSIZE - 1) || temp.y <= 0)
     {
         system("cls");
         printf("게임 오버");
-        AfterGO();
+        AfterGame();
     }
 
     for (int i = 0; i < 20; i++)
@@ -604,7 +595,7 @@ void GameOver()
         {
             system("cls");
             printf("게임 오버");
-            AfterGO();
+            AfterGame();
         }
     }
 
@@ -614,25 +605,46 @@ void GameOver()
         if (temp.x == forTemp.x && temp.y == forTemp.y) {
             system("cls");
             printf("게임 오버");
-            AfterGO();
+            AfterGame();
         }
     }
 }
 
-void AfterGO() {
+void AfterGame() {
+    system("cls");
+    int n;
     FILE* scoreFile;
     if (snakeScore > bestSnakeScore) {
         fopen_s(&scoreFile, "data.txt", "w");
         fprintf_s(scoreFile, "%d", snakeScore);
         fclose(scoreFile);
     }
+    if(snakeScore == 20) {
+        gotoxy(57, 10);
+        printf(" CLEAR ");
+    }
+    else {
+        gotoxy(55, 10);
+        printf(" GAME OVER ");
+    }
+
+    gotoxy(50, 12);
+    printf("최고점수:%d  현재점수:%d", bestSnakeScore, snakeScore);
+    gotoxy(50, 14);
+    printf("메인메뉴:1 게임종료:2");
+    gotoxy(55, 20);
+    printf("선택하세요: ");
+    scanf_s("%d", &n);
     exit(0);
 }
 
 void GameExplain(int score)
 {
+    gotoxy(50, 4);
+    printf("▶ 점수 : %d", snakeScore);
+
     gotoxy(50, 6);
-    printf("bestScore:  %d", score);
+    printf("▶ 최고 점수:  %d", score);
 
     gotoxy(50, 8);
     puts("▶ 방향키: 이동");
@@ -651,13 +663,6 @@ void GameExplain(int score)
 
     gotoxy(50, 18);
     puts("▶ 20점을 넘으면 클리어입니다");
-}
-
-void Clear()
-{
-    system("cls");
-    printf("클리어");
-    exit(0);
 }
 
 int choiceGame(int mode) {
@@ -706,8 +711,9 @@ int main()
     fclose(scoreFile);
 
     mode = choiceGame(mode);
-    if (mode == 1) select = 0;
-    else  select = 7;
+    if (mode == 1) { select = 0; select2 = 0; }
+    else if (mode == 2) { select = 7; select2 = 20; }
+    else if (mode == 3) { select = 7; select2 = 30; }
 
     Map();
     CursorView(0);
