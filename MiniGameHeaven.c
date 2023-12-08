@@ -69,6 +69,8 @@ linkedList* snakeList;
 bool plusChecker;
 int blockCount = 0;
 static int snakeScore = 0;
+static int mode = 0;
+static int snakeRealScore = 0;
 int bestSnakeScore;
 Component blockArray[30] = { {0, 0} };
 
@@ -110,7 +112,7 @@ void insertLast(linkedList* list, coord value); // 맨 뒤에 노드를 추가�
 void Map();
 void Init();
 void MoveCoor();
-int choiceGame(int mode);
+int choiceGame();
 
 void Delete();
 void Output();
@@ -1365,6 +1367,7 @@ bool isAtFood(Component block, Component food) { // new
 void Score()
 {
     snakeScore += 1;
+    snakeRealScore += mode;
     if (snakeScore == 20)
         AfterGame();
 }
@@ -1413,8 +1416,8 @@ void AfterGame() {
     system("cls");
     int n;
     FILE* scoreFile;
-    if (snakeScore > bestSnakeScore) {
-        bestSnakeScore = snakeScore;
+    if (snakeRealScore > bestSnakeScore) {
+        bestSnakeScore = snakeRealScore;
         fopen_s(&scoreFile, "data.txt", "w");
         printf_s(scoreFile, "%d", snakeScore);
         fclose(scoreFile);
@@ -1429,7 +1432,7 @@ void AfterGame() {
     }
 
     gotoxy(50, 12);
-    printf("최고점수:%d  현재점수:%d", bestSnakeScore, snakeScore);
+    printf("최고점수:%d  현재점수:%d", bestSnakeScore, snakeRealScore);
     gotoxy(50, 14);
     printf("메인메뉴:1 게임종료:2");
     gotoxy(55, 20);
@@ -1438,6 +1441,7 @@ void AfterGame() {
     if (n == 1) {
         system("cls");
         snakeScore = 0;
+        snakeRealScore = 0;
         main();
     }
     else if (n == 2) {
@@ -1448,7 +1452,7 @@ void AfterGame() {
 void GameExplain(int score)
 {
     gotoxy(50, 4);
-    printf("▶ 점수 : %d", snakeScore);
+    printf("▶ 점수 : %d", snakeRealScore);
 
     gotoxy(50, 6);
     printf("▶ 최고 점수:  %d", score);
@@ -1472,7 +1476,7 @@ void GameExplain(int score)
     puts("▶ 20점을 넘으면 클리어입니다");
 }
 
-int choiceGame(int mode) {
+int choiceGame() {
     int playing = 1;
     int xCoor = 35;
     while (playing) {
@@ -1514,14 +1518,14 @@ int choiceGame(int mode) {
 
 int snakemain()
 {
-    int key, mode = 0;
-    int select, select2 = 30;
+    int key;
+    int select = 0, select2 = 30;
     FILE* scoreFile;
     fopen_s(&scoreFile, "SnakeScore.txt", "r");
     fscanf_s(scoreFile, "%d", &bestSnakeScore);
     fclose(scoreFile);
 
-    mode = choiceGame(mode);
+    choiceGame();
     if (mode == 1) { select = 0; select2 = 0; }
     else if (mode == 2) { select = 7; select2 = 20; }
     else if (mode == 3) { select = 7; select2 = 30; }
