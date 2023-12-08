@@ -119,6 +119,7 @@ bool isInBlockArray(Component block); // block이 blockArray 내에 존재하는
 
 void FoodOutput();
 void Eat();
+int CanEatFood();
 void BodyPlus();
 void Score();
 void Clear();
@@ -404,6 +405,26 @@ void Move(int diff)
 void BodyPlus()
 {
     plusChecker = true;
+}
+
+int CanEatFood() {
+    int count;
+    count = 0;
+
+    if (food.x == 1 || food.x == 18) count++;
+    if (food.y == 1 || food.y == 18) count++;
+
+    for (int i = 0; i < strlen(blockArray); i++) {
+        if (blockArray[i].x == food.x && blockArray[i].y + 1 == food.y) { count++; }
+        if (blockArray[i].x == food.x && blockArray[i].y - 1 == food.y) { count++; }
+        if (blockArray[i].x + 2 == food.x && blockArray[i].y == food.y) { count++; }
+        if (blockArray[i].x - 2 == food.x && blockArray[i].y == food.y) { count++; }
+    }
+
+    if (count > 2) {
+        return 0;
+    }
+    else return 1;
 }
 
 void FoodOutput() {
