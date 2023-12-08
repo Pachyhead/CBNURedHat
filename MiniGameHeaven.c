@@ -1419,7 +1419,7 @@ void AfterGame() {
     if (snakeRealScore > bestSnakeScore) {
         bestSnakeScore = snakeRealScore;
         fopen_s(&scoreFile, "SnakeScore.txt", "w");
-        printf_s(scoreFile, "%d", snakeScore);
+        printf_s(scoreFile, "%d", snakeRealScore);
         fclose(scoreFile);
     }
     if (snakeScore == 20) {
