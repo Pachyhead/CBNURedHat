@@ -2,8 +2,21 @@
 #include<string.h>
 #include<stdlib.h>
 #include<time.h>
-
+#define MAX_COUNT 20
 int main(viod) {
+	int data[MAX_COUNT];
+    int i, sub_i;
+    srand((unsigned int)time(NULL));
+
+   for (i = 0; i < MAX_COUNT; i++) {
+	   data[i] = rand() % MAX_COUNT;
+	   for (sub_i = 0; sub_i < i; sub_i++) {
+		if (data[i] == data[sub_i]) {
+			i--;
+			break;
+		}
+	}
+}
 	char ans[20][24] = { "서울", "도쿄", "베이징", "워싱턴", "로마", "파리", "베를린", "아테네",
 	"리스본", "마드리드", "seven", "baddie", "이미 슬픈 사랑", "사랑은 늘 도망가", "hype boy",
 	"omg", "next level", "fast forward", "좋니", "오래된 노래"};
@@ -22,20 +35,21 @@ int main(viod) {
 	char input[24] = {""};
 	int n, cnt=0;
 
-	srand(time(NULL));
+	i=0;
 
 	while(cnt<10) {
 		cnt++;
 		n = rand() % 20;
-		printf("%s\n", quiz[n]);
+		printf("%s\n", quiz[data[i]]);
         fgets(input, sizeof(input), stdin);
 		input[strcspn(input, "\n")] = '\0';
-		if (strcmp(ans[n], input) == 0) {
+		if (strcmp(ans[data[i]], input) == 0) {
 			printf("맞았습니다.\n");
 		}
 		else {
 			printf("틀렸습니다.\n");
 		}
+		i++;
 	}
 	return 0;
 }
