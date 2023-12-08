@@ -129,5 +129,14 @@ int main(void) {
 		}
 		
 	}
-	return 0;
+	system("cls");
+
+	gotoxy(55, 12);
+	printf("최종점수:%d",  score);
+	gotoxy(50, 14);
+	printf("메인메뉴:1 게임종료:2");
+	gotoxy(55, 20);
+	printf("선택하세요: ");
+	scanf_s("%d", &n);
+	system("cls");
 }
