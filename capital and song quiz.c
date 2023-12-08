@@ -72,22 +72,53 @@ int main(void) {
 	"오래전에 함께듣던 노래가\n거리에서 내게 우연히 들려온것처럼"};
 	char input[24] = {""};
 	int n, cnt=0;
+	char ch;
+	int reset = 0;
+	i = 0;
 
-	i=0;
-
-	while(cnt<10) {
+	while (cnt < 10) {
 		cnt++;
-		n = rand() % 20;
-		printf("%s\n", quiz[data[i]]);
-        fgets(input, sizeof(input), stdin);
-		input[strcspn(input, "\n")] = '\0';
-		if (strcmp(ans[data[i]], input) == 0) {
-			printf("맞았습니다.\n");
+		if (reset == 0) {
+			gotoxy(16, 8);
+			for (int k = 0; k < 88; k++) {
+				printf(" ");
+			}
+			gotoxy(16, 14);
+			for (int k = 0; k < 88; k++) {
+				printf(" ");
+			}
+
+			gotoxy(16, 17);
+			for (int k = 0; k < 88; k++) {
+				printf(" ");
+			}
+
+
+			gotoxy(16, 8);
+			printf("문제:%s\n", quiz[data[i]]);
+			gotoxy(50, 14);
+			printf("답:");
+			gotoxy(53, 14);
+			fgets(input, sizeof(input), stdin);
+			input[strcspn(input, "\n")] = '\0';
+			if (strcmp(ans[data[i]], input) == 0) {
+				gotoxy(55,17);
+				printf("맞았습니다.\n");
+			}
+			else {
+				gotoxy(55, 17);
+				printf("틀렸습니다.\n");
+			}
+			i++;
+			gotoxy(55,18 );
+			
+			ch = getchar();
+
+			if (ch == '\n') {
+				reset = 0;
+			}
 		}
-		else {
-			printf("틀렸습니다.\n");
-		}
-		i++;
+		
 	}
 	return 0;
 }
