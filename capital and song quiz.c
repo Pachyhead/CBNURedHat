@@ -14,7 +14,7 @@ void gotoxy(int x, int y) {//원하는 x,y좌표로 이동시키는 함수
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
 
-void wall() {
+void quizwall() {
 	textcolor(9);//파란색
 	gotoxy(15, 4);
 	for (int i = 0; i < 91; i++) {
@@ -41,7 +41,7 @@ void wall() {
 
 }
 int main(void) {
-	wall();
+	quizwall();
 	int score=0;
 	int data[MAX_COUNT];
     int i, sub_i;
