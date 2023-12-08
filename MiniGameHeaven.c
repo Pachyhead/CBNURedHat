@@ -399,7 +399,7 @@ int choose() {
     return stage;
 }
 
-void wall() {
+void BBwall() {
     textColor(9);//파란색
     for (int i = 0; i < 41; i++) {
         printf("■");
@@ -425,7 +425,7 @@ void wall() {
 
 int BBmain() {
     int stage = choose();
-    wall();
+    BBwall();
     int n;
     int x = 18;  // 공의 초기 x 좌표
     int y = 20;  // 공의 초기 y 좌표
