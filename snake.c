@@ -699,8 +699,9 @@ int main()
     fclose(scoreFile);
 
     mode = choiceGame(mode);
-    if (mode == 1) select = 0;
-    else  select = 7;
+    if (mode == 1) { select = 0; select2 = 0; }
+    else if (mode == 2) { select = 7; select2 = 20; }
+    else if (mode == 3) { select = 7; select2 = 30; }
 
     Map();
     CursorView(0);
