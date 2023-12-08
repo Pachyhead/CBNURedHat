@@ -604,14 +604,14 @@ int BBmain() {
         counttime = 600;
     }
     if (stage == 2) {
-        counttime = 300;
+        counttime = 420;
     }
     else if (stage == 3) {
-        counttime = 180;
+        counttime = 360;
     }
 
     else if (stage == 4) {
-        counttime = 60;
+        counttime = 300;
     }
     CursorView(0);
     while (1) {
