@@ -4,7 +4,7 @@
 #include<stdlib.h>
 #include<stdbool.h>
 #include<time.h>
-#include<string.h>
+#include<string.h> 
 
 #define DOWN 80
 #define LEFT 75
@@ -69,7 +69,7 @@ int blockCount = 0;
 static int snakeScore = 0;
 int bestSnakeScore;
 Component blockArray[20] = { {0, 0} };
-
+  
 int map[20][20] =
 {
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -107,7 +107,6 @@ void Map();
 void Init();
 void MoveCoor();
 int choiceGame(int mode);
-void consorClear();
 
 void Delete();
 void Output();
@@ -128,7 +127,8 @@ void Clear();
 void textColor(int colorNum);
 
 void GameOver();
-void GameExplain();
+void AfterGO();
+void GameExplain(int score);
 
 void gotoxy(int x, int y);
 void CursorView(char show);//커서숨기기
@@ -437,19 +437,19 @@ void FoodOutput() {
     food.y = rand() % 18 + 1;
     playing = CanEatFood();
 
-    if(playing){
-    for (int i = 0; i < length; i++) {
-        coord forTemp = getCoord(snakeList, i);
-        if (forTemp.x == food.x && forTemp.y == food.y) {
-            food.x = (rand() % 18 + 1) * 2;
-            food.y = rand() % 18 + 1;
+    if (playing) {
+        for (int i = 0; i < length; i++) {
+            coord forTemp = getCoord(snakeList, i);
+            if (forTemp.x == food.x && forTemp.y == food.y) {
+                food.x = (rand() % 18 + 1) * 2;
+                food.y = rand() % 18 + 1;
+            }
         }
-    }
 
-    gotoxy(food.x, food.y);
-    textColor(14);
-    printf("★");
-    textColor(15);
+        gotoxy(food.x, food.y);
+        textColor(14);
+        printf("★");
+        textColor(15);
     } else {
         FoodOutput();
     }
@@ -468,12 +468,12 @@ void Eat()
 
 void BlockOutput(int diff)
 {
-    if(diff == 0) return 0;
+    if (diff == 0) return 0;
     int ranCase;
     Component block = { 0,0 }; // 장애물 정의
 
     ranCase = rand() % diff; // 중요
-    gotoxy(30, 30);
+    gotoxy(30, 29);
     printf("ranCase : %d ", ranCase);
     printf("blockCount : %d", blockCount);
 
@@ -621,10 +621,10 @@ void AfterGO(){
     exit(0);
 }
 
-void GameExplain()
+void GameExplain(int score)
 {
     gotoxy(50, 6);
-    printf("bestScore: %d", snakeScore);
+    printf("bestScore:  %d", score);
 
     gotoxy(50, 8);
     puts("▶ 방향키: 이동");
@@ -699,7 +699,7 @@ int main()
 
     mode = choiceGame(mode);
     if (mode == 1) select = 0;
-    else  select = 7;
+    else  select = 7; 
 
     Map();
     CursorView(0);
@@ -710,7 +710,7 @@ int main()
 
     while (1)
     {
-        GameExplain();
+        GameExplain(bestSnakeScore);
 
         if (_kbhit())
         {
@@ -786,6 +786,7 @@ void gotoxy(int x, int y)
     COORD Pos = { x, y };
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
+
 void CursorView(char show)//커서숨기기
 {
     HANDLE hConsole;
