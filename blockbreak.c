@@ -305,7 +305,7 @@ int main(){
         gotoxy(bar6_x, bar6_y);
         printf(" ");
         
-        if (GetAsyncKeyState(VK_LEFT) & 0x8000) { // 막대 왼쪽으로 이동
+        if (GetAsyncKeyState(VK_LEFT) & 0x8000 && bar1_x!=1 ) { // 막대 왼쪽으로 이동
             bar1_x--;
             bar2_x--;
             bar3_x--;
@@ -313,7 +313,7 @@ int main(){
             bar5_x--;
             bar6_x--;
         }
-        if (GetAsyncKeyState(VK_RIGHT) & 0x8000) { // 막대 오른쪽으로 이동
+        if (GetAsyncKeyState(VK_RIGHT) & 0x8000 && bar6_x!=40) { // 막대 오른쪽으로 이동
             bar1_x++;
             bar2_x++;
             bar3_x++;
