@@ -75,6 +75,9 @@ int main(void) {
 	char ch;
 	int reset = 0;
 	i = 0;
+	i = 0;
+    gotoxy(80, 5);
+    printf("점수:%d", score);
 
 	while (cnt < 10) {
 		cnt++;
@@ -104,11 +107,16 @@ int main(void) {
 			if (strcmp(ans[data[i]], input) == 0) {
 				gotoxy(55,17);
 				printf("맞았습니다.\n");
+				score = score + 10;
 			}
 			else {
 				gotoxy(55, 17);
 				printf("틀렸습니다.\n");
 			}
+			gotoxy(80, 5);
+			printf("점수:%d", score);			
+
+
 			i++;
 			gotoxy(55,18 );
 			
