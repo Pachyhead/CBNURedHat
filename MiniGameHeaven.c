@@ -1420,6 +1420,7 @@ void AfterGame() {
     int n;
     FILE* scoreFile;
     if (snakeScore > bestSnakeScore) {
+        bestSnakeScore = snakeScore;
         fopen_s(&scoreFile, "data.txt", "w");
         printf_s(scoreFile, "%d", snakeScore);
         fclose(scoreFile);
@@ -1440,7 +1441,12 @@ void AfterGame() {
     gotoxy(55, 20);
     printf("선택하세요: ");
     scanf_s("%d", &n);
+    if (n == 1) {
+    main();
+    }
+    else if (n == 2) {
     exit(0);
+}
 }
 
 void GameExplain(int score)
