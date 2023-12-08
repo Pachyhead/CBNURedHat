@@ -1418,7 +1418,7 @@ void AfterGame() {
     FILE* scoreFile;
     if (snakeRealScore > bestSnakeScore) {
         bestSnakeScore = snakeRealScore;
-        fopen_s(&scoreFile, "data.txt", "w");
+        fopen_s(&scoreFile, "SnakeScore.txt", "w");
         printf_s(scoreFile, "%d", snakeScore);
         fclose(scoreFile);
     }
