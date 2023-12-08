@@ -1380,14 +1380,14 @@ void GameOver()
     coord temp = getCoord(snakeList, 0);
     int length = snakeList->snakeLength;
 
-    if (temp.x >= 38 || temp.x <= 0)
+    if (temp.x >= (MAPSIZE - 1) * 2 || temp.x <= 0)
     {
         system("cls");
         printf("게임 오버");
         AfterGame();
     }
 
-    if (temp.y >= 19 || temp.y <= 0)
+    if (temp.y >= MAPSIZE - 1 || temp.y <= 0)
     {
         system("cls");
         printf("게임 오버");
