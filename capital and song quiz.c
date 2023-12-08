@@ -50,12 +50,12 @@ int main(void) {
    for (i = 0; i < MAX_COUNT; i++) {
 	   data[i] = rand() % MAX_COUNT;
 	   for (sub_i = 0; sub_i < i; sub_i++) {
-		if (data[i] == data[sub_i]) {
+			if (data[i] == data[sub_i]) {
 			i--;
 			break;
+			}
 		}
 	}
-}
 	char ans[20][24] = { "서울", "도쿄", "베이징", "워싱턴", "로마", "파리", "베를린", "아테네",
 	"리스본", "마드리드", "seven", "baddie", "이미 슬픈 사랑", "사랑은 늘 도망가", "hype boy",
 	"omg", "next level", "fast forward", "좋니", "오래된 노래"};
@@ -139,4 +139,10 @@ int main(void) {
 	printf("선택하세요: ");
 	scanf_s("%d", &n);
 	system("cls");
+	if(n==1){
+		return 0;
+	}
+	else if(n==2){
+		exit(0);
+	}
 }
