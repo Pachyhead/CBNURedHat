@@ -124,6 +124,7 @@ bool isInSnake(Component block); // 장애물이 snake의 좌표에 존재하는
 void printSanctuary(Component block, bool toggle); // sanctuary를 화면에 출력해보는 함수
 bool isInBlockArray(Component block); // block이 blockArray 내에 존재하는지 check.
 bool isAtFood(Component block, Component food);
+bool isAtRoute(Component head);
 
 void FoodOutput();
 void Eat();
@@ -1278,7 +1279,7 @@ void BlockOutput(int diff, int diff2)
         do {
             block.x = (rand() % 18 + 1) * 2;
             block.y = rand() % 18 + 1;
-        } while (isInSnake(block) || isInSanctuary(block) || isAtFood(block, food));
+        } while (isInSnake(block) || isInSanctuary(block) || isAtFood(block, food) || isAtRoute(block));
 
         putInSanctuary(block);
         printSanctuary(block, false); // sanctuary를 화면에 표시할지 true, false를 통해 선택
@@ -1362,6 +1363,21 @@ bool isInBlockArray(Component block) {
 bool isAtFood(Component block, Component food) { // new
     if (block.x == food.x && block.y == food.y) return true;
     else return false;
+}
+
+bool isAtRoute(Component block) {
+    coord head = getCoord(snakeList, 0);
+
+    bool xChecker = false;
+
+    if (abs(block.x - head.x) <= 1) xChecker = true;
+    else return false;
+
+    if (xChecker == true) {
+        if (abs(block.y - head.y) <= 1) return true;
+    }
+
+    return false;
 }
 
 void Score()
