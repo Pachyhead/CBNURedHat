@@ -6,6 +6,7 @@
 #include<string.h>
 
 #define MAX_COUNT 20
+#define TESTSCORE 20
 
 #define DOWN 80
 #define LEFT 75
@@ -125,6 +126,7 @@ void printSanctuary(Component block, bool toggle); // sanctuary를 화면에 출
 bool isInBlockArray(Component block); // block이 blockArray 내에 존재하는지 check.
 bool isAtFood(Component block, Component food);
 bool isAtRoute(Component head);
+void clearBlockArray(Component* blockArray);
 
 void FoodOutput();
 void Eat();
@@ -1380,11 +1382,18 @@ bool isAtRoute(Component block) {
     return false;
 }
 
+void clearBlockArray(Component* blockArray) {
+    Component temp = { 0, 0 };
+    for (int i = 0; i < 30; i++) {
+        blockArray[i] = temp;
+    }
+}
+
 void Score()
 {
     snakeScore += 1;
     snakeRealScore += mode;
-    if (snakeScore == 20)
+    if (snakeScore == TESTSCORE)
         AfterGame();
 }
 
@@ -1429,6 +1438,7 @@ void GameOver()
 }
 
 void AfterGame() {
+    clearBlockArray(blockArray);
     system("cls");
     int n;
     FILE* scoreFile;
@@ -1438,7 +1448,7 @@ void AfterGame() {
         fprintf_s(scoreFile, "%d", snakeRealScore);
         fclose(scoreFile);
     }
-    if (snakeScore == 20) {
+    if (snakeScore == TESTSCORE) {
         gotoxy(57, 10);
         printf(" CLEAR ");
     }
